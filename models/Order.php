@@ -15,25 +15,35 @@ class Order
      * @param array $products <p>Массив с товарами</p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function save($userName, $userPhone, $userComment, $userId, $products)
+    public static function save($userID, $date, $userComment, $status, $products)
     {
-        // Соединение с БД
-        $db = Db::getConnection();
-
         // Текст запроса к БД
-        $sql = 'INSERT INTO product_order (user_name, user_phone, user_comment, user_id, products) '
-                . 'VALUES (:user_name, :user_phone, :user_comment, :user_id, :products)';
+        R::exec('INSERT INTO orders (userComment, userID, date, status) '
+            . 'VALUES (:userComment, :userID, :date, :status)',
+                array(  ':userComment' => $userComment,
+                        ':userID' => $userID,
+                        ':date' => $date,
+                        ':status' => $status
+            ));
+        $orderID = R::getCell('SELECT ID FROM orders WHERE userID= :userID ORDER BY :date DESC',
+            array(':userID' => $userID, ':date' => $date));
+        
+            foreach ($products as $prod) {
+            R::exec('INSERT INTO productsToOrders (orderID, productID) VALUES (?, ?)',
+                array($orderID, $userID));
+        }
 
-        $products = json_encode($products);
+        return true;
+        // $products = json_encode($products);
 
-        $result = $db->prepare($sql);
-        $result->bindParam(':user_name', $userName, PDO::PARAM_STR);
-        $result->bindParam(':user_phone', $userPhone, PDO::PARAM_STR);
-        $result->bindParam(':user_comment', $userComment, PDO::PARAM_STR);
-        $result->bindParam(':user_id', $userId, PDO::PARAM_STR);
-        $result->bindParam(':products', $products, PDO::PARAM_STR);
+        // $result = $db->prepare($sql);
+        // $result->bindParam(':user_name', $userName, PDO::PARAM_STR);
+        // $result->bindParam(':user_phone', $userPhone, PDO::PARAM_STR);
+        // $result->bindParam(':user_comment', $userComment, PDO::PARAM_STR);
+        // $result->bindParam(':user_id', $userId, PDO::PARAM_STR);
+        // $result->bindParam(':products', $products, PDO::PARAM_STR);
 
-        return $result->execute();
+        // return $result->execute();
     }
 
     /**
