@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `phpshop` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `phpshop`;
+CREATE DATABASE  IF NOT EXISTS `pharma` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `pharma`;
 -- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: phpshop

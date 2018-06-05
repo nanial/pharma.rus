@@ -3,7 +3,7 @@
 // Массив с параметрами подключения к базе данных
 return array(
     'host' => 'localhost',
-    'dbname' => 'phpshop',
+    'dbname' => 'pharma',
     'user' => 'root',
-    'password' => '',
+    'password' => 'Aa3286485090',
 );

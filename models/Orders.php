@@ -15,7 +15,7 @@ class Order
      * @param array $products <p>Массив с товарами</p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function save($userID, $date, $userComment, $status, $products)
+    public static function save($userID, $date, $userComment, $status, $productsID)
     {
         // Текст запроса к БД
         R::exec('INSERT INTO orders (userComment, userID, date, status) '
@@ -28,9 +28,9 @@ class Order
         $orderID = R::getCell('SELECT ID FROM orders WHERE userID= :userID ORDER BY :date DESC',
             array(':userID' => $userID, ':date' => $date));
         
-            foreach ($products as $prod) {
+        foreach ($productsID as $prodID) {
             R::exec('INSERT INTO productsToOrders (orderID, productID) VALUES (?, ?)',
-                array($orderID, $userID));
+                array($orderID, $prodID));
         }
 
         return true;
@@ -53,21 +53,11 @@ class Order
     public static function getOrdersList()
     {
         // Соединение с БД
-        $db = Db::getConnection();
+        //$db = Db::getConnection();
 
         // Получение и возврат результатов
-        $result = $db->query('SELECT id, user_name, user_phone, date, status FROM product_order ORDER BY id DESC');
-        $ordersList = array();
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $ordersList[$i]['id'] = $row['id'];
-            $ordersList[$i]['user_name'] = $row['user_name'];
-            $ordersList[$i]['user_phone'] = $row['user_phone'];
-            $ordersList[$i]['date'] = $row['date'];
-            $ordersList[$i]['status'] = $row['status'];
-            $i++;
-        }
-        return $ordersList;
+        return R :: getAll('SELECT ID, userComment, userID, date, status FROM orders ORDER BY id DESC');
+       
     }
 
     /**
@@ -102,22 +92,22 @@ class Order
     public static function getOrderById($id)
     {
         // Соединение с БД
-        $db = Db::getConnection();
+        //$db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT * FROM product_order WHERE id = :id';
+        return  R :: getAll( 'SELECT * FROM orders WHERE ID = :ID', array(':ID'=>$id));
 
-        $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
+       // $result = $db->prepare($sql);
+        //$result->bindParam(':id', $id, PDO::PARAM_INT);
 
         // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
+       // $result->setFetchMode(PDO::FETCH_ASSOC);
 
         // Выполняем запрос
-        $result->execute();
+       // $result->execute();
 
         // Возвращаем данные
-        return $result->fetch();
+        //return $result->fetch();
     }
 
     /**
@@ -128,15 +118,15 @@ class Order
     public static function deleteOrderById($id)
     {
         // Соединение с БД
-        $db = Db::getConnection();
+        //$db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'DELETE FROM product_order WHERE id = :id';
+       return R::exec ('DELETE FROM orders WHERE ID = :ID', array (':ID'=>$id));
 
         // Получение и возврат результатов. Используется подготовленный запрос
-        $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
-        return $result->execute();
+       // $result = $db->prepare($sql);
+        //$result->bindParam(':id', $id, PDO::PARAM_INT);
+       // return $result->execute();
     }
 
     /**
@@ -149,30 +139,30 @@ class Order
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function updateOrderById($id, $userName, $userPhone, $userComment, $date, $status)
+    public static function updateOrderById($id, $userComment, $userID,  $date, $status)
     {
         // Соединение с БД
-        $db = Db::getConnection();
+       // $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = "UPDATE product_order
+        return R::exec( "UPDATE orders
             SET 
-                user_name = :user_name, 
-                user_phone = :user_phone, 
-                user_comment = :user_comment, 
+                userID = :userID, 
+                userComment = :userComment,              
                 date = :date, 
                 status = :status 
-            WHERE id = :id";
+            WHERE id = :id", array (':userComment'=>$userComment, ':userID'=>$userId, ':date'=>$date, ':status' => $status));
+
 
         // Получение и возврат результатов. Используется подготовленный запрос
-        $result = $db->prepare($sql);
+        /*$result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':user_name', $userName, PDO::PARAM_STR);
         $result->bindParam(':user_phone', $userPhone, PDO::PARAM_STR);
         $result->bindParam(':user_comment', $userComment, PDO::PARAM_STR);
         $result->bindParam(':date', $date, PDO::PARAM_STR);
         $result->bindParam(':status', $status, PDO::PARAM_INT);
-        return $result->execute();
+        return $result->execute();*/
     }
 
 }

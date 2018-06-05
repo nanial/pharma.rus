@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Класс Category - модель для работы с категориями товаров
+ * Класс Manufactures - модель для работы с поставщиками товаров
  */
-class Category
+class Suppliers
 {
 
     /**
      * Возвращает массив категорий для списка на сайте
      * @return array <p>Массив с категориями</p>
      */
-    public static function getCategoriesList()
+    public static function getSuppliersListAdmin()
     {
 
         // Запрос к БД
-        return R::getAll('SELECT ID, name FROM category WHERE status = "1" ORDER BY sort_order, name ASC');
+        return R::getAll('SELECT *  FROM  suppliers  ');
 
         // Получение и возврат результатов
         // $i = 0;
@@ -32,34 +32,17 @@ class Category
      * (при этом в результат попадают и включенные и выключенные категории)
      * @return array <p>Массив категорий</p>
      */
-    public static function getCategoriesListAdmin()
-    {
-
-        // Запрос к БД
-        return R::getAll('SELECT ID, name, sort_order, status FROM category ORDER BY sort_order ASC');
-
-        // Получение и возврат результатов
-        // $categoryList = array();
-        // $i = 0;
-        // while ($row = $result->fetch()) {
-        //     $categoryList[$i]['id'] = $row['id'];
-        //     $categoryList[$i]['name'] = $row['name'];
-        //     $categoryList[$i]['sort_order'] = $row['sort_order'];
-        //     $categoryList[$i]['status'] = $row['status'];
-        //     $i++;
-        // }
-        // return $categoryList;
-    }
-
+    
     /**
      * Удаляет категорию с заданным id
      * @param integer $id
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function deleteCategoryById($id)
+    public static function deleteSuppliersById($id)
+    
     {
         // Текст запроса к БД
-        return R::exec('DELETE FROM category WHERE ID = ?', array($id));
+        return R::exec('DELETE FROM  suppliers WHERE ID = ?', array($id));
 
         // // Получение и возврат результатов. Используется подготовленный запрос
         // $result = $db->prepare($sql);
@@ -75,11 +58,11 @@ class Category
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function updateCategoryById($id, $name, $sortOrder, $status)
+    public static function updateSuppliersById($id, $nameOfSuppliers, $settlementAccount, $resedentRB)
     {
         // Текст запроса к БД
-        return R::exec("UPDATE category SET name = ?, sort_order = ?, status = ? WHERE ID = ?",
-            array($name, $sortOrder, $status, $id));
+        return R::exec("UPDATE Suppliers SET NameOfSuppliers	 = ?, SettlementAccount = ?, ResedentRB = ? WHERE ID = ?",
+            array($id, $nameOfSuppliers, $settlementAccount, $resedentRB));
 
         // Получение и возврат результатов. Используется подготовленный запрос
         // $result = $db->prepare($sql);
@@ -95,10 +78,10 @@ class Category
      * @param integer $id <p>id категории</p>
      * @return array <p>Массив с информацией о категории</p>
      */
-    public static function getCategoryById($id)
+    public static function getSuppliersById($id)
     {
         // Текст запроса к БД
-        return R::getAll('SELECT * FROM category WHERE ID = ?', array($id));
+        return R::getRow('SELECT * FROM suppliers WHERE ID = ?', array($id));
 
         // Используется подготовленный запрос
         // $result = $db->prepare($sql);
@@ -120,7 +103,7 @@ class Category
      * @param integer $status <p>Статус</p>
      * @return string <p>Текстовое пояснение</p>
      */
-    public static function getStatusText($status)
+   /* public static function getStatusText($status)
     {
         switch ($status) {
             case '1':
@@ -130,7 +113,7 @@ class Category
                 return 'Скрыта';
                 break;
         }
-    }
+    }*/
 
     /**
      * Добавляет новую категорию
@@ -139,11 +122,11 @@ class Category
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат добавления записи в таблицу</p>
      */
-    public static function createCategory($name, $sortOrder, $status)
+    public static function createManufactures($account, $nameOfManuffactures, $country)
     {
         // Текст запроса к БД
-        return R::exec("INSERT INTO category (name, sort_order, status) VALUES (?, ?, ?)",
-            array($name, $sortOrder, $status));
+        return R::exec("INSERT INTO uppliers ( nameOfSuppliers, settlementAccount, resedentRB) VALUES (?, ?, ?)",
+            array( $nameOfSuppliers, $settlementAccount, $resedentRB));
 
         // Получение и возврат результатов. Используется подготовленный запрос
         // $result = $db->prepare($sql);

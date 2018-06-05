@@ -18,34 +18,27 @@ class Product
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
     {
         // Соединение с БД
-        $db = Db::getConnection();
+        //$db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT id, name, price, is_new FROM product '
-                . 'WHERE status = "1" ORDER BY id DESC '
-                . 'LIMIT :count';
+        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical FROM product a'
+                . 'Inner Join medical b on a.medicalID=b.ID'
+                . 'WHERE a.status = 1 ORDER BY a.ID DESC '
+                . 'LIMIT :count', array (':count'=>$count                  
+         ));
 
         // Используется подготовленный запрос
-        $result = $db->prepare($sql);
-        $result->bindParam(':count', $count, PDO::PARAM_INT);
+       // $result = $db->prepare($sql);
+        //$result->bindParam(':count', $count, PDO::PARAM_INT);
 
         // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
+        //$result->setFetchMode(PDO::FETCH_ASSOC);
         
         // Выполнение коменды
-        $result->execute();
+        //$result->execute();
 
         // Получение и возврат результатов
-        $i = 0;
-        $productsList = array();
-        while ($row = $result->fetch()) {
-            $productsList[$i]['id'] = $row['id'];
-            $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['price'] = $row['price'];
-            $productsList[$i]['is_new'] = $row['is_new'];
-            $i++;
-        }
-        return $productsList;
+        
     }
 
     /**
@@ -61,33 +54,18 @@ class Product
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
         // Соединение с БД
-        $db = Db::getConnection();
+        // $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT id, name, price, is_new FROM product '
-                . 'WHERE status = 1 AND category_id = :category_id '
-                . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
+        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical FROM product a'
+                . 'Inner Join medical b on a.medicalID=b.ID'
+                . 'WHERE a.status = 1 AND a.categoryID = :categoryID ORDER BY a.ID ASC'
+                . 'LIMIT :count OFFSET :offset', array (':count'=>$count ,
+                ':offset'=>$offset,
+                ':categaoryID'=>$categoryId               
+         ));
 
-        // Используется подготовленный запрос
-        $result = $db->prepare($sql);
-        $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
-        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
-        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
-
-        // Выполнение коменды
-        $result->execute();
-
-        // Получение и возврат результатов
-        $i = 0;
-        $products = array();
-        while ($row = $result->fetch()) {
-            $products[$i]['id'] = $row['id'];
-            $products[$i]['name'] = $row['name'];
-            $products[$i]['price'] = $row['price'];
-            $products[$i]['is_new'] = $row['is_new'];
-            $i++;
-        }
-        return $products;
+       
     }
 
     /**
@@ -98,23 +76,17 @@ class Product
     public static function getProductById($id)
     {
         // Соединение с БД
-        $db = Db::getConnection();
+        //$db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT * FROM product WHERE id = :id';
+        //$sql = 'SELECT * FROM product WHERE id = :id';
 
         // Используется подготовленный запрос
-        $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
-
-        // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
-
-        // Выполнение коменды
-        $result->execute();
-
-        // Получение и возврат результатов
-        return $result->fetch();
+        return R::getRow ('SELECT * FROM product a'
+        . 'Inner Join medical b on a.medicalID=b.ID'
+        . 'WHERE a.ID=:ID', array (':ID'=>$id                     
+    ));
+       
     }
 
     /**
@@ -124,22 +96,21 @@ class Product
      */
     public static function getTotalProductsInCategory($categoryId)
     {
-        // Соединение с БД
-        $db = Db::getConnection();
+        
 
         // Текст запроса к БД
-        $sql = 'SELECT count(id) AS count FROM product WHERE status="1" AND category_id = :category_id';
+        return R::getCell('SELECT count(ID) AS count FROM product WHERE status="1" AND categoryID= :categoryID', array(':categoryID'=>$categoryID));
 
         // Используется подготовленный запрос
-        $result = $db->prepare($sql);
+        /*$result = $db->prepare($sql);
         $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
 
         // Выполнение коменды
-        $result->execute();
+        $result->execute();*/
 
         // Возвращаем значение count - количество
-        $row = $result->fetch();
-        return $row['count'];
+        // $row = $result->fetch();
+        //return $row['count'];
     }
 
     /**
@@ -150,21 +121,20 @@ class Product
     public static function getProdustsByIds($idsArray)
     {
         // Соединение с БД
-        $db = Db::getConnection();
-
+        // $db = Db::getConnection();
         // Превращаем массив в строку для формирования условия в запросе
         $idsString = implode(',', $idsArray);
 
         // Текст запроса к БД
-        $sql = "SELECT * FROM product WHERE status='1' AND id IN ($idsString)";
+        return R::getAll ("SELECT * FROM product WHERE status='1' AND id IN (:Ids)", array(':Ids'=>$idsString));
 
-        $result = $db->query($sql);
+        //$result = $db->query($sql);
 
         // Указываем, что хотим получить данные в виде массива
-        $result->setFetchMode(PDO::FETCH_ASSOC);
+        //$result->setFetchMode(PDO::FETCH_ASSOC);
 
         // Получение и возврат результатов
-        $i = 0;
+       /* $i = 0;
         $products = array();
         while ($row = $result->fetch()) {
             $products[$i]['id'] = $row['id'];
@@ -173,7 +143,7 @@ class Product
             $products[$i]['price'] = $row['price'];
             $i++;
         }
-        return $products;
+        return $products;*/
     }
 
     /**
@@ -183,22 +153,14 @@ class Product
     public static function getRecommendedProducts()
     {
         // Соединение с БД
-        $db = Db::getConnection();
+       // $db = Db::getConnection();
 
         // Получение и возврат результатов
-        $result = $db->query('SELECT id, name, price, is_new FROM product '
-                . 'WHERE status = "1" AND is_recommended = "1" '
-                . 'ORDER BY id DESC');
-        $i = 0;
-        $productsList = array();
-        while ($row = $result->fetch()) {
-            $productsList[$i]['id'] = $row['id'];
-            $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['price'] = $row['price'];
-            $productsList[$i]['is_new'] = $row['is_new'];
-            $i++;
-        }
-        return $productsList;
+        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical FROM product a'
+        . 'Inner Join medical b on a.medicalID=b.ID'
+        . 'WHERE a.status = 1 AND a.isRecommended =1 ORDER BY a.ID DESC'                        
+        );
+       
     }
 
     /**
@@ -208,20 +170,13 @@ class Product
     public static function getProductsList()
     {
         // Соединение с БД
-        $db = Db::getConnection();
+       //$db = Db::getConnection();
 
         // Получение и возврат результатов
-        $result = $db->query('SELECT id, name, price, code FROM product ORDER BY id ASC');
-        $productsList = array();
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $productsList[$i]['id'] = $row['id'];
-            $productsList[$i]['name'] = $row['name'];
-            $productsList[$i]['code'] = $row['code'];
-            $productsList[$i]['price'] = $row['price'];
-            $i++;
-        }
-        return $productsList;
+        return R::getAll ('SELECT a.ID,a.price,a.code, b.nameOfMedical FROM product a'
+        . 'Inner Join medical b on a.medicalID=b.ID ORDER BY a.ID ASC'                        
+        );
+       
     }
 
     /**
@@ -232,15 +187,13 @@ class Product
     public static function deleteProductById($id)
     {
         // Соединение с БД
-        $db = Db::getConnection();
+        // $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'DELETE FROM product WHERE id = :id';
+        return R::exec('DELETE FROM product WHERE ID = :id');
 
         // Получение и возврат результатов. Используется подготовленный запрос
-        $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
-        return $result->execute();
+       
     }
 
     /**
@@ -252,25 +205,37 @@ class Product
     public static function updateProductById($id, $options)
     {
         // Соединение с БД
-        $db = Db::getConnection();
+        // $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = "UPDATE product
+        return R::exec("UPDATE product
             SET 
-                name = :name, 
+                ID = :ID,                
                 code = :code, 
                 price = :price, 
-                category_id = :category_id, 
-                brand = :brand, 
+                categoryID = :categoryID, 
                 availability = :availability, 
                 description = :description, 
-                is_new = :is_new, 
-                is_recommended = :is_recommended, 
-                status = :status
-            WHERE id = :id";
+                isNew = :isNew, 
+                isRecommended = :isRecommended, 
+                status = :status,
+                medicalID = :medicalID,
+                arrivalsID = :arrivalsID 
+
+            WHERE ID = :ID", array (':ID'=>$id,
+            ':code' =>$code,
+            ':price' =>$price,
+            ':category' =>$category,
+            ':availability' => $availability,
+            ':description' => $description,
+            ':isNew' => $isNew,
+            ':isRecommended' => $isRecommended,
+            ':medicalId' => $medicalID,
+            ':arrivalsID' => $arrivalsID
+        ));
 
         // Получение и возврат результатов. Используется подготовленный запрос
-        $result = $db->prepare($sql);
+       /* $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
         $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
@@ -282,7 +247,7 @@ class Product
         $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
         $result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_INT);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
-        return $result->execute();
+        return $result->execute();*/
     }
 
     /**
@@ -293,18 +258,30 @@ class Product
     public static function createProduct($options)
     {
         // Соединение с БД
-        $db = Db::getConnection();
+        //$db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'INSERT INTO product '
-                . '(name, code, price, category_id, brand, availability,'
-                . 'description, is_new, is_recommended, status)'
+        return R::exec ('INSERT INTO product '
+                . '(ID, code, price, categoryID, availability,'
+                . 'description, isNew, isRecommended, status, medicalID,arrivalsID)'
                 . 'VALUES '
-                . '(:name, :code, :price, :category_id, :brand, :availability,'
-                . ':description, :is_new, :is_recommended, :status)';
+                . '(:ID, :code, :price, :categoryID, :availability,'
+                . ':description, :isNew, :isRecommended, :status, :medicalID,:arrivalsID)',array(':ID'=>$ID,
+                ':code'=>$code,
+                ':price'=>$price,
+                ':categoryID' =>$categoryID,
+                ':availability' =>$availability,
+                ':description' =>$description,
+                ':isNew' => $isNew,
+                ':isRecommended' => $isRecommended,
+                ':status' => $status,
+                ':medicalID' => $medicalID,
+                ':arrivalsID' => $arrivalsID,
+                ':ID' => $ID
+            ));
 
         // Получение и возврат результатов. Используется подготовленный запрос
-        $result = $db->prepare($sql);
+       /* $result = $db->prepare($sql);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
         $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
         $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
@@ -320,7 +297,7 @@ class Product
             return $db->lastInsertId();
         }
         // Иначе возвращаем 0
-        return 0;
+        return 0;*/
     }
 
     /**
