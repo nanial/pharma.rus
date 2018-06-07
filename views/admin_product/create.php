@@ -80,8 +80,8 @@
 
                         <br/><br/>
 
-                        <p>Рекомендуемые</p>
-                        <select name="is_recommended">
+                        <p>Отечественные препараты</p>
+                        <select name="isRecommended">
                             <option value="1" selected="selected">Да</option>
                             <option value="0">Нет</option>
                         </select>

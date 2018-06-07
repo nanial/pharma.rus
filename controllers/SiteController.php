@@ -66,7 +66,13 @@ class SiteController
         require_once(ROOT . '/views/site/contact.php');
         return true;
     }
-    
+    public function actionFeedback()
+    {
+        
+        // Подключаем вид
+        require_once(ROOT . '/views/site/feedback.php');
+        return true;
+    }
     /**
      * Action для страницы "О магазине"
      */
