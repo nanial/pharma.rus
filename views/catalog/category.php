@@ -11,8 +11,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a href="/category/<?php echo $categoryItem['id']; ?>"
-                                           class="<?php if ($categoryId == $categoryItem['id']) echo 'active'; ?>"
+                                        <a href="/category/<?php echo $categoryItem['ID']; ?>"
+                                           class="<?php if ($categoryId == $categoryItem['ID']) echo 'active'; ?>"
                                            >                                                                                    
                                                <?php echo $categoryItem['name']; ?>
                                         </a>
@@ -33,16 +33,16 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="<?php echo Product::getImage($product['id']); ?>" alt="" />
+                                        <img src="<?php echo Product::getImage($product['ID']); ?>" alt="" />
                                         <h2><?php echo $product['price']; ?> бел.руб</h2>
                                         <p>
-                                            <a href="/product/<?php echo $product['id']; ?>">
-                                                <?php echo $product['name']; ?>
+                                            <a href="/product/<?php echo $product['ID']; ?>">
+                                                <?php echo $product['nameOfMedical']; ?>
                                             </a>
                                         </p>
-                                        <a href="/cart/add/<?php echo $product['id']; ?>" class="btn btn-default add-to-cart" data-id="<?php echo $product['id']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="/cart/add/<?php echo $product['ID']; ?>" class="btn btn-default add-to-cart" data-id="<?php echo $product['ID']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </div>
-                                    <?php if ($product['is_new']): ?>
+                                    <?php if ($product['isNew']): ?>
                                         <img src="/template/images/home/new.png" class="new" alt="" />
                                     <?php endif; ?>
                                 </div>

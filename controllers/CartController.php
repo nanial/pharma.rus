@@ -29,7 +29,7 @@ class CartController
     public function actionAddAjax($id)
     {
         // Добавляем товар в корзину и печатаем результат: количество товаров в корзине
-        echo Cart::addProduct($id);
+        Cart::addProduct($id);
         return true;
     }
     
@@ -79,11 +79,14 @@ class CartController
      */
     public function actionCheckout()
     {
-        // Получием данные из корзины      
-        $productsInCart = Cart::getProducts();
+        // Получием данные из корзины
+        $prods = Cart::getProducts();
+        if ($prods) {
+            $productsIds = array_keys($prods);
+        }
 
         // Если товаров нет, отправляем пользователи искать товары на главную
-        if ($productsInCart == false) {
+        if ($productsIds == false) {
             header("Location: /");
         }
 
@@ -91,7 +94,6 @@ class CartController
         $categories = Category::getCategoriesList();
 
         // Находим общую стоимость
-        $productsIds = array_keys($productsInCart);
         $products = Product::getProdustsByIds($productsIds);
         $totalPrice = Cart::getTotalPrice($products);
 
@@ -99,61 +101,42 @@ class CartController
         $totalQuantity = Cart::countItems();
 
         // Поля для формы
-        $userName = false;
-        $userPhone = false;
         $userComment = false;
 
         // Статус успешного оформления заказа
         $result = false;
 
         // Проверяем является ли пользователь гостем
-        if (!User::isGuest()) {
-            // Если пользователь не гость
-            // Получаем информацию о пользователе из БД
-            $userId = User::checkLogged();
-            $user = User::getUserById($userId);
-            $userName = $user['name'];
-        } else {
+        if (User::isGuest()) {
             // Если гость, поля формы останутся пустыми
-            $userId = false;
+            header("Location: /");
         }
+
+        $userId = User::checkLogged();
+        $user = User::getUserById($userId);
+        $userName = $user['name'];
 
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
-            $userName = $_POST['userName'];
-            $userPhone = $_POST['userPhone'];
             $userComment = $_POST['userComment'];
+            $status = 1;
 
-            // Флаг ошибок
-            $errors = false;
+            $date = date('Y-m-d H:i:s');
 
-            // Валидация полей
-            if (!User::checkName($userName)) {
-                $errors[] = 'Неправильное имя';
-            }
-            if (!User::checkPhone($userPhone)) {
-                $errors[] = 'Неправильный телефон';
-            }
+            $result = Order::save($userId, $date, $userComment, $status, $productsIds);
 
+            if ($result) {
+                // Если заказ успешно сохранен
+                // Оповещаем администратора о новом заказе по почте                
+                $adminEmail = 'nanial@mail.ru';
+                $message = '<a href="/">Список заказов</a>';
+                $subject = 'Новый заказ!';
+                mail($adminEmail, $subject, $message);
 
-            if ($errors == false) {
-                // Если ошибок нет
-                // Сохраняем заказ в базе данных
-                $result = Order::save($userName, $userPhone, $userComment, $userId, $productsInCart);
-
-                if ($result) {
-                    // Если заказ успешно сохранен
-                    // Оповещаем администратора о новом заказе по почте                
-                    $adminEmail = 'php.start@mail.ru';
-                    $message = '<a href="http://digital-mafia.net/admin/orders">Список заказов</a>';
-                    $subject = 'Новый заказ!';
-                    mail($adminEmail, $subject, $message);
-
-                    // Очищаем корзину
-                    Cart::clear();
-                }
+                // Очищаем корзину
+                Cart::clear();
             }
         }
 

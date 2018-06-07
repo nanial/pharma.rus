@@ -93,7 +93,7 @@ class Cart
             // Проходим по переданному в метод массиву товаров
             foreach ($products as $item) {
                 // Находим общую стоимость: цена товара * количество товара
-                $total += $item['price'] * $productsInCart[$item['id']];
+                $total += $item['price'] * $productsInCart[$item['ID']];
             }
         }
 

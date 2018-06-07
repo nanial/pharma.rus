@@ -11,7 +11,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a href="/category/<?php echo $categoryItem['id'];?>">
+                                        <a href="/category/<?php echo $categoryItem['ID'];?>">
                                             <?php echo $categoryItem['name'];?>
                                         </a>
                                     </h4>
@@ -40,14 +40,14 @@
                                 <tr>
                                     <td><?php echo $product['code'];?></td>
                                     <td>
-                                        <a href="/product/<?php echo $product['id'];?>">
-                                            <?php echo $product['name'];?>
+                                        <a href="/product/<?php echo $product['ID'];?>">
+                                            <?php echo $product['nameOfMedical'];?>
                                         </a>
                                     </td>
                                     <td><?php echo $product['price'];?></td>
-                                    <td><?php echo $productsInCart[$product['id']];?></td> 
+                                    <td><?php echo $productsInCart[$product['ID']];?></td> 
                                     <td>
-                                        <a href="/cart/delete/<?php echo $product['id'];?>">
+                                        <a href="/cart/delete/<?php echo $product['ID'];?>">
                                             <i class="fa fa-times"></i>
                                         </a>
                                     </td>

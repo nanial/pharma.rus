@@ -221,9 +221,9 @@ class User
        // $db = Db::getConnection();
 
         // Текст запроса к БД
-        $result = R::getAll( 'SELECT * FROM user WHERE ID = :ID',  array(':ID'=>$id        
-        ));
-
+        return R::getAll( 'SELECT name FROM user WHERE ID = :ID',  array(':ID'=>$id        
+        ))[0];
+        
         // Получение и возврат результатов. Используется подготовленный запрос
        /* $result = $db->prepare($sql);
         $result->bindParam(':id', $id, PDO::PARAM_INT);*/
@@ -231,8 +231,6 @@ class User
         // Указываем, что хотим получить данные в виде массива
         /*$result->setFetchMode(PDO::FETCH_ASSOC);
         $result->execute();*/
-
-        return $result;
     }
 
 }

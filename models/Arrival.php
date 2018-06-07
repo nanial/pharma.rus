@@ -78,7 +78,7 @@ class Arrival
     public static function updateArrivalById($id, $dateOfArrival, $supplierID, $RelatedDocument)
     {
         // Текст запроса к БД
-        return R::exec("UPDATE arrival SET dateOfArrival = ?, supplierID = ?, RelatedDocument = ? WHERE ID = ?",
+        return R::exec("UPDATE arrival SET dateOfArrival = ?, supplierID = ?, RelatedDocument = ? WHERE ID = ?" ,
             array($dateOfArrival, $supplierID, $RelatedDocument, $id));
 
         // Получение и возврат результатов. Используется подготовленный запрос
@@ -142,7 +142,7 @@ class Arrival
     public static function createArrival($dateOfArrival, $supplierID, $relatedDocument)
     {
         // Текст запроса к БД
-        return R::exec("INSERT INTO arrival (dateOfArrival, supplierID, relatedDocument) VALUES (?, ?, ?)",
+        return R::exec("INSERT INTO arrival (dateOfArrival, supplierID, relatedDocument) VALUES (?, ?, ?)" ,
             array($dateOfArrival, $supplierID, $relatedDocument));
 
         // Получение и возврат результатов. Используется подготовленный запрос

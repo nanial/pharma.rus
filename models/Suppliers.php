@@ -125,7 +125,7 @@ class Suppliers
     public static function createManufactures($account, $nameOfManuffactures, $country)
     {
         // Текст запроса к БД
-        return R::exec("INSERT INTO uppliers ( nameOfSuppliers, settlementAccount, resedentRB) VALUES (?, ?, ?)",
+        return R::exec("INSERT INTO uppliers ( nameOfSuppliers, settlementAccount, resedentRB) VALUES (?, ?, ?)" ,
             array( $nameOfSuppliers, $settlementAccount, $resedentRB));
 
         // Получение и возврат результатов. Используется подготовленный запрос

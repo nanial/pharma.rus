@@ -21,8 +21,8 @@ class Product
         //$db = Db::getConnection();
 
         // Текст запроса к БД
-        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical FROM product a'
-                . 'Inner Join medical b on a.medicalID=b.ID'
+        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
+                . 'Inner Join medical b on a.medicalID=b.ID '
                 . 'WHERE a.status = 1 ORDER BY a.ID DESC '
                 . 'LIMIT :count', array (':count'=>$count                  
          ));
@@ -57,12 +57,12 @@ class Product
         // $db = Db::getConnection();
 
         // Текст запроса к БД
-        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical FROM product a'
-                . 'Inner Join medical b on a.medicalID=b.ID'
-                . 'WHERE a.status = 1 AND a.categoryID = :categoryID ORDER BY a.ID ASC'
-                . 'LIMIT :count OFFSET :offset', array (':count'=>$count ,
+        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
+                . 'Inner Join medical b on a.medicalID=b.ID '
+                . 'WHERE a.status = 1 AND a.categoryID = :categoryID ORDER BY a.ID ASC '
+                . 'LIMIT 6 OFFSET :offset', array (
                 ':offset'=>$offset,
-                ':categaoryID'=>$categoryId               
+                ':categoryID'=>$categoryId               
          ));
 
        
@@ -82,9 +82,8 @@ class Product
         //$sql = 'SELECT * FROM product WHERE id = :id';
 
         // Используется подготовленный запрос
-        return R::getRow ('SELECT * FROM product a'
-        . 'Inner Join medical b on a.medicalID=b.ID'
-        . 'WHERE a.ID=:ID', array (':ID'=>$id                     
+        return R::getRow ('SELECT * FROM product AS a'. ' Inner Join medical AS b on a.medicalID=b.ID'
+        . ' WHERE a.ID=:ID', array (':ID'=>$id                     
     ));
        
     }
@@ -99,7 +98,7 @@ class Product
         
 
         // Текст запроса к БД
-        return R::getCell('SELECT count(ID) AS count FROM product WHERE status="1" AND categoryID= :categoryID', array(':categoryID'=>$categoryID));
+        return R::getCell('SELECT count(ID) AS count FROM product WHERE status="1" AND categoryID= :categoryID', array(':categoryID'=>$categoryId));
 
         // Используется подготовленный запрос
         /*$result = $db->prepare($sql);
@@ -119,14 +118,21 @@ class Product
      * @return array <p>Массив со списком товаров</p>
      */
     public static function getProdustsByIds($idsArray)
-    {
+    {   
         // Соединение с БД
         // $db = Db::getConnection();
         // Превращаем массив в строку для формирования условия в запросе
-        $idsString = implode(',', $idsArray);
-
+        if ($idArray) 
+        {
+            $idsString = implode(',', $idsArray);
+        }
+        
         // Текст запроса к БД
-        return R::getAll ("SELECT * FROM product WHERE status='1' AND id IN (:Ids)", array(':Ids'=>$idsString));
+        return R::getAll ('SELECT a.ID, a.price, a.code, b.nameOfMedical, a.image FROM product a '
+                . 'Inner Join medical b on a.medicalID=b.ID '
+                . 'WHERE a.status = 1 AND a.ID in (:Ids) ORDER BY a.ID ASC ', 
+            array(':Ids'=>$idsString)
+        );
 
         //$result = $db->query($sql);
 
@@ -156,8 +162,8 @@ class Product
        // $db = Db::getConnection();
 
         // Получение и возврат результатов
-        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical FROM product a'
-        . 'Inner Join medical b on a.medicalID=b.ID'
+        return R::getAll ('SELECT a.ID, a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
+        . 'Inner Join medical b on a.medicalID=b.ID '
         . 'WHERE a.status = 1 AND a.isRecommended =1 ORDER BY a.ID DESC'                        
         );
        
@@ -173,7 +179,7 @@ class Product
        //$db = Db::getConnection();
 
         // Получение и возврат результатов
-        return R::getAll ('SELECT a.ID,a.price,a.code, b.nameOfMedical FROM product a'
+        return R::getAll ('SELECT a.ID,a.price,a.code, b.nameOfMedical, a.image FROM product a'
         . 'Inner Join medical b on a.medicalID=b.ID ORDER BY a.ID ASC'                        
         );
        
@@ -215,7 +221,8 @@ class Product
                 price = :price, 
                 categoryID = :categoryID, 
                 availability = :availability, 
-                description = :description, 
+                description = :description,
+                image = :image, 
                 isNew = :isNew, 
                 isRecommended = :isRecommended, 
                 status = :status,
@@ -231,7 +238,8 @@ class Product
             ':isNew' => $isNew,
             ':isRecommended' => $isRecommended,
             ':medicalId' => $medicalID,
-            ':arrivalsID' => $arrivalsID
+            ':arrivalsID' => $arrivalsID,
+            ':image' => $image
         ));
 
         // Получение и возврат результатов. Используется подготовленный запрос
@@ -263,10 +271,10 @@ class Product
         // Текст запроса к БД
         return R::exec ('INSERT INTO product '
                 . '(ID, code, price, categoryID, availability,'
-                . 'description, isNew, isRecommended, status, medicalID,arrivalsID)'
+                . 'description, isNew, isRecommended, status, medicalID,arrivalsID, image)'
                 . 'VALUES '
                 . '(:ID, :code, :price, :categoryID, :availability,'
-                . ':description, :isNew, :isRecommended, :status, :medicalID,:arrivalsID)',array(':ID'=>$ID,
+                . ':description, :isNew, :isRecommended, :status, :medicalID,:arrivalsID , image)',array(':ID'=>$ID,
                 ':code'=>$code,
                 ':price'=>$price,
                 ':categoryID' =>$categoryID,
@@ -277,7 +285,8 @@ class Product
                 ':status' => $status,
                 ':medicalID' => $medicalID,
                 ':arrivalsID' => $arrivalsID,
-                ':ID' => $ID
+                ':ID' => $ID,
+                ':image' => $image
             ));
 
         // Получение и возврат результатов. Используется подготовленный запрос

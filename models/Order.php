@@ -25,11 +25,10 @@ class Order
                         ':date' => $date,
                         ':status' => $status
             ));
-        $orderID = R::getCell('SELECT ID FROM orders WHERE userID= :userID ORDER BY :date DESC',
-            array(':userID' => $userID, ':date' => $date));
-        
+        $orderID = R::getCell('SELECT ID FROM orders WHERE userID= :userID ORDER BY date DESC',
+            array(':userID' => $userID));
         foreach ($productsID as $prodID) {
-            R::exec('INSERT INTO productsToOrders (orderID, productID) VALUES (?, ?)',
+            R::exec('INSERT INTO productsToOrders (orderID, productID) VALUES (?, ?)' ,
                 array($orderID, $prodID));
         }
 

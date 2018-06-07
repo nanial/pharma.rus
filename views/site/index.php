@@ -11,7 +11,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a href="/category/<?php echo $categoryItem['id']; ?>">
+                                        <a href="/category/<?php echo $categoryItem['ID']; ?>">
                                             <?php echo $categoryItem['name']; ?>
                                         </a>
                                     </h4>
@@ -31,16 +31,16 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="<?php echo Product::getImage($product['id']); ?>" alt="" />
+                                        <img src="/upload/images/products/<?php echo $product['image'] ?>" alt="" />
                                         <h2> <?php echo $product['price']; ?> бел.руб</h2>
                                         <p>
-                                            <a href="/product/<?php echo $product['id']; ?>">
-                                                <?php echo $product['name']; ?>
+                                            <a href="/product/<?php echo $product['ID']; ?>">
+                                                <?php echo $product['nameOfMedical']; ?>
                                             </a>
                                         </p>
-                                        <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $product['id']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $product['ID']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                     </div>
-                                    <?php if ($product['is_new']): ?>
+                                    <?php if ($product['isNew']): ?>
                                         <img src="/template/images/home/new.png" class="new" alt="" />
                                     <?php endif; ?>
                                 </div>
@@ -68,15 +68,15 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="<?php echo Product::getImage($sliderItem['id']); ?>" alt="" />
+                                            <img src="/upload/images/products/<?php echo $sliderItem['image']; ?>" alt="" />
                                             <h2><?php echo $sliderItem['price']; ?> бел.руб </h2>
-                                            <a href="/product/<?php echo $sliderItem['id']; ?>">
-                                                <?php echo $product['name']; ?>
+                                            <a href="/product/<?php echo $sliderItem['ID']; ?>">
+                                                <?php echo $product['nameOfMedical']; ?>
                                             </a>
                                             <br/><br/>
-                                            <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $sliderItem['id']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                            <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $sliderItem['ID']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
                                         </div>
-                                        <?php if ($sliderItem['is_new']): ?>
+                                        <?php if ($sliderItem['isNew']): ?>
                                             <img src="/template/images/home/new.png" class="new" alt="" />
                                         <?php endif; ?>
                                     </div>

@@ -59,7 +59,7 @@ CREATE TABLE `product` (
   `availability` int(11) NOT NULL,
   `brand` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `is_new` int(11) NOT NULL DEFAULT '0',
+  `isNew` int(11) NOT NULL DEFAULT '0',
   `is_recommended` int(11) NOT NULL DEFAULT '0',
   `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)

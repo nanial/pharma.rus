@@ -98,7 +98,7 @@ class Medical
     {
         // Текст запроса к БД
         return R::exec("INSERT INTO medical (nameOfMedical, anotation, manufacturerID, unitOfMeasure, unitName) VALUES ( ?, ?, ?, ?, ?)",
-            array($nameOfMedical, $anotation, $manufacturerID, $unitOfMeasure, $unitName));
+            array($nameOfMedical, $anotation, $manufacturerID, $unitOfMeasure, $unitNames));
 
         // Получение и возврат результатов. Используется подготовленный запрос
         // $result = $db->prepare($sql);

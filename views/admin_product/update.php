@@ -67,9 +67,9 @@
                         <br/><br/>
                         
                         <p>Новинка</p>
-                        <select name="is_new">
-                            <option value="1" <?php if ($product['is_new'] == 1) echo ' selected="selected"'; ?>>Да</option>
-                            <option value="0" <?php if ($product['is_new'] == 0) echo ' selected="selected"'; ?>>Нет</option>
+                        <select name="isNew">
+                            <option value="1" <?php if ($product['isNew'] == 1) echo ' selected="selected"'; ?>>Да</option>
+                            <option value="0" <?php if ($product['isNew'] == 0) echo ' selected="selected"'; ?>>Нет</option>
                         </select>
                         
                         <br/><br/>

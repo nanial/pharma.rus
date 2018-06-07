@@ -11,7 +11,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a href="/category/<?php echo $categoryItem['id'];?>">
+                                        <a href="/category/<?php echo $categoryItem['ID'];?>">
                                             <?php echo $categoryItem['name'];?>
                                         </a>
                                     </h4>
@@ -31,20 +31,20 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="<?php echo Product::getImage($product['id']); ?>" alt="" />
+                                        <img src="<?php echo Product::getImage($product['ID']); ?>" alt="" />
                                         <h2>бел.руб <?php echo $product['price'];?></h2>
                                         <p>
-                                            <a href="/product/<?php echo $product['id'];?>">
-                                                <?php echo $product['name'];?>
+                                            <a href="/product/<?php echo $product['ID'];?>">
+                                                <?php echo $product['nameOfMedical'];?>
                                             </a>
                                         </p>
                                         
-                                        <a href="#" data-id="<?php echo $product['id'];?>"
+                                        <a href="#" data-id="<?php echo $product['ID'];?>"
                                            class="btn btn-default add-to-cart">
                                             <i class="fa fa-shopping-cart"></i>В корзину
                                         </a>
                                     </div>
-                                    <?php if ($product['is_new']): ?>
+                                    <?php if ($product['isNew']): ?>
                                         <img src="/template/images/home/new.png" class="new" alt="" />
                                     <?php endif; ?>
                                 </div>

@@ -27,17 +27,17 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="<?php echo Product::getImage($product['id']); ?>" alt="" />
+                                <img src="<?php echo Product::getImage($product['ID']); ?>" alt="" />
                             </div>
                         </div>
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
 
-                                <?php if ($product['is_new']): ?>
+                                <?php if ($product['isNew']): ?>
                                     <img src="/template/images/product-details/new.jpg" class="newarrival" alt="" />
                                 <?php endif; ?>
 
-                                <h2><?php echo $product['name']; ?></h2>
+                                <h2><?php echo $product['nameOfMedical']; ?></h2>
                                 <p>Код препарата: <?php echo $product['code']; ?></p>
                                 <span>
                                     <span> <?php echo $product['price']; ?> бел.руб</span>
@@ -47,7 +47,7 @@
                                     </a>
                                 </span>
                                 <p><b>Наличие:</b> <?php echo Product::getAvailabilityText($product['availability']); ?></p>
-                                <p><b>Международное непатентованное название:</b> <?php echo $product['brand']; ?></p>
+                                <p><b>Международное непатентованное название:</b> <?php echo $product['unitName']; ?></p>
                             </div><!--/product-information-->
                         </div>
                     </div>

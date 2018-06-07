@@ -36,7 +36,7 @@ class Category
     {
 
         // Запрос к БД
-        return R::getAll('SELECT ID, name, sort_order, status FROM category ORDER BY sort_order ASC');
+        return R::getAll('SELECT ID, name, sort_order, status FROM category ORDER BY sort_order ASCs');
 
         // Получение и возврат результатов
         // $categoryList = array();

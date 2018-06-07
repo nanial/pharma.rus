@@ -73,7 +73,7 @@
                         <br/><br/>
 
                         <p>Новинка</p>
-                        <select name="is_new">
+                        <select name="isNew">
                             <option value="1" selected="selected">Да</option>
                             <option value="0">Нет</option>
                         </select>
