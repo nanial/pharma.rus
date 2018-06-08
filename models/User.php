@@ -15,8 +15,7 @@ class User
      */
     public static function register($name, $email, $password,$phone)
     {
-        // Соединение с БД
-        //$db = Db::getConnection();
+        
 
         // Текст запроса к БД
         return R::exec('INSERT INTO user (name, email, password,phone) '
@@ -26,12 +25,7 @@ class User
                  ':phone'=>$phone                    
                  ));
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-       /* $result = $db->prepare($sql);
-        $result->bindParam(':name', $name, PDO::PARAM_STR);
-        $result->bindParam(':email', $email, PDO::PARAM_STR);
-        $result->bindParam(':password', $password, PDO::PARAM_STR);
-        return $result->execute();*/
+        
     }
 
     /**
@@ -43,9 +37,7 @@ class User
      */
     public static function edit($name, $email, $password,$phone)
         {
-        // Соединение с БД
-      //  $db = Db::getConnection();
-
+       
         // Текст запроса к БД
         return R:: exec("UPDATE user SET name = :name, 
         password =:password   phone =:phone
@@ -56,12 +48,7 @@ class User
                    ':email'=>$email            
             ));
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-       /* $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
-        $result->bindParam(':name', $name, PDO::PARAM_STR);
-        $result->bindParam(':password', $password, PDO::PARAM_STR);
-        return $result->execute();*/
+       
     }
 
     /**
@@ -72,23 +59,14 @@ class User
      */
     public static function checkUserData($email, $password)
     {
-        // Соединение с БД
-        //$db = Db::getConnection();
+        
 
         // Текст запроса к БД
         $user = R::getRow('SELECT * FROM user WHERE email = :email AND password = :password', array(':password'=>$password,
                          ':email'=>$email            
         ));
 
-        // Получение результатов. Используется подготовленный запрос
-       /*
-        $result = $db->prepare($sql);
-        $result->bindParam(':email', $email, PDO::PARAM_INT);
-        $result->bindParam(':password', $password, PDO::PARAM_INT);
-        $result->execute();
-        */
-        // Обращаемся к записи
-        //$user = $result->fetch();
+        
 
         if ($user) {
             // Если запись существует, возвращаем id пользователя
@@ -193,18 +171,13 @@ class User
      */
     public static function checkEmailExists($email)
     {
-        // Соединение с БД        
-       // $db = Db::getConnection();
+      
 
         // Текст запроса к БД
       $result = R::getCell('SELECT COUNT(*) FROM user WHERE email = :email', array( ':email'=>$email            
         ));
 
-        // Получение результатов. Используется подготовленный запрос
-       /* $result = $db->prepare($sql);
-        $result->bindParam(':email', $email, PDO::PARAM_STR);
-        $result->execute();*/
-
+        
         if ($result)
             return true;
         return false;
@@ -217,20 +190,12 @@ class User
      */
     public static function getUserById($id)
     {
-        // Соединение с БД
-       // $db = Db::getConnection();
-
+       
         // Текст запроса к БД
         return R::getAll( 'SELECT name FROM user WHERE ID = :ID',  array(':ID'=>$id        
         ))[0];
         
-        // Получение и возврат результатов. Используется подготовленный запрос
-       /* $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);*/
-
-        // Указываем, что хотим получить данные в виде массива
-        /*$result->setFetchMode(PDO::FETCH_ASSOC);
-        $result->execute();*/
+       
     }
 
 }

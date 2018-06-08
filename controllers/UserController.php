@@ -112,7 +112,7 @@ class UserController
         unset($_SESSION["user"]);
         
         // Перенаправляем пользователя на главную страницу
-        header("Location: /");
+        header("Location: /site/index");
     }
 
 }

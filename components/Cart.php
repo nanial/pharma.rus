@@ -15,17 +15,18 @@ class Cart
     public static function addProduct($id)
     {
         // Приводим $id к типу integer
-        $id = intval($id);
+        $id = intval($id); 
 
         // Пустой массив для товаров в корзине
         $productsInCart = array();
 
         // Если в корзине уже есть товары (они хранятся в сессии)
-        if (isset($_SESSION['products'])) {
+        if (isset($_SESSION['products']) && $_SESSION['products'] != "") {
             // То заполним наш массив товарами
             $productsInCart = $_SESSION['products'];
         }
 
+        file_put_contents('log.txt', $_SESSION['products'].PHP_EOL, FILE_APPEND);
         // Проверяем есть ли уже такой товар в корзине 
         if (array_key_exists($id, $productsInCart)) {
             // Если такой товар есть в корзине, но был добавлен еще раз, увеличим количество на 1

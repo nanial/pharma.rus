@@ -2,7 +2,6 @@
 /*************************
 *******Typography******
 **************************/
-@import url(http://fonts.googleapis.com/css?family=Captur:400,300,400italic,500,700,100&subset=latin,cyrillic-ext,cyrillic);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
@@ -272,7 +271,7 @@ a#scrollUp i{
     background: #F0F0E9;
     border: medium none;
     color: #B2B2B2;
-    font-family: 'Captur';
+    font-family: 'Tenor Sans';
     font-size: 12px;
     font-weight: 300;
     height: 35px;
@@ -1619,7 +1618,7 @@ h2.title {
 
 #cart_items .cart_info .cart_description h4 a {
     color: #363432;
-    font-family: 'Captur',sans-serif;
+    font-family: 'Tenor Sans',sans-serif;
     font-size: 20px;
     font-weight: normal;
 
@@ -1664,7 +1663,7 @@ h2.title {
     float: left;
     font-size: 16px;
     text-align: center;
-    font-family: 'Captur',sans-serif;
+    font-family: 'Tenor Sans',sans-serif;
 
 }
 
@@ -2010,7 +2009,7 @@ h2.title {
 .single-blog-post h3 {
     color: #696763;
     font-size: 16px;
-    font-family: 'Captur',sans-serif;
+    font-family: 'Tenor Sans',sans-serif;
     text-transform: uppercase;
     font-weight: 500;
     margin-bottom: 17px;

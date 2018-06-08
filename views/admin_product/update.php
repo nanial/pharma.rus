@@ -24,7 +24,7 @@
                     <form action="#" method="post" enctype="multipart/form-data">
 
                         <p>Название товара</p>
-                        <input type="text" name="name" placeholder="" value="<?php echo $product['name']; ?>">
+                        <input type="text" name="name" placeholder="" value="<?php echo $product['nameOfMedical']; ?>">
 
                         <p>Артикул</p>
                         <input type="text" name="code" placeholder="" value="<?php echo $product['code']; ?>">
@@ -33,11 +33,11 @@
                         <input type="text" name="price" placeholder="" value="<?php echo $product['price']; ?>">
 
                         <p>Категория</p>
-                        <select name="category_id">
+                        <select name="categoryID">
                             <?php if (is_array($categoriesList)): ?>
                                 <?php foreach ($categoriesList as $category): ?>
-                                    <option value="<?php echo $category['id']; ?>" 
-                                        <?php if ($product['category_id'] == $category['id']) echo ' selected="selected"'; ?>>
+                                    <option value="<?php echo $category['ID']; ?>" 
+                                        <?php if ($product['categoryId'] == $category['ID']) echo ' selected="selected"'; ?>>
                                         <?php echo $category['name']; ?>
                                     </option>
                                 <?php endforeach; ?>
@@ -47,10 +47,10 @@
                         <br/><br/>
 
                         <p>Международное непатентованное название</p>
-                        <input type="text" name="brand" placeholder="" value="<?php echo $product['brand']; ?>">
+                        <input type="text" name="brand" placeholder="" value="<?php echo $product['unitName']; ?>">
 
                         <p>Изображение товара</p>
-                        <img src="<?php echo Product::getImage($product['id']); ?>" width="200" alt="" />
+                        <img src="<?php echo Product::getImage($product['ID']); ?>" width="200" alt="" />
                         <input type="file" name="image" placeholder="" value="<?php echo $product['image']; ?>">
 
                         <p>Рекомендации к применению</p>
@@ -76,8 +76,8 @@
 
                         <p>Рекомендуемые</p>
                         <select name="is_recommended">
-                            <option value="1" <?php if ($product['is_recommended'] == 1) echo ' selected="selected"'; ?>>Да</option>
-                            <option value="0" <?php if ($product['is_recommended'] == 0) echo ' selected="selected"'; ?>>Нет</option>
+                            <option value="1" <?php if ($product['isRecommended'] == 1) echo ' selected="selected"'; ?>>Да</option>
+                            <option value="0" <?php if ($product['isRecommended'] == 0) echo ' selected="selected"'; ?>>Нет</option>
                         </select>
                         
                         <br/><br/>

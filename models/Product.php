@@ -27,16 +27,7 @@ class Product
                 . 'LIMIT :count', array (':count'=>$count                  
          ));
 
-        // Используется подготовленный запрос
-       // $result = $db->prepare($sql);
-        //$result->bindParam(':count', $count, PDO::PARAM_INT);
-
-        // Указываем, что хотим получить данные в виде массива
-        //$result->setFetchMode(PDO::FETCH_ASSOC);
-        
-        // Выполнение коменды
-        //$result->execute();
-
+     
         // Получение и возврат результатов
         
     }
@@ -53,8 +44,7 @@ class Product
         // Смещение (для запроса)
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
-        // Соединение с БД
-        // $db = Db::getConnection();
+       
 
         // Текст запроса к БД
         return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
@@ -75,13 +65,9 @@ class Product
      */
     public static function getProductById($id)
     {
-        // Соединение с БД
-        //$db = Db::getConnection();
-
+        
         // Текст запроса к БД
-        //$sql = 'SELECT * FROM product WHERE id = :id';
-
-        // Используется подготовленный запрос
+      
         return R::getRow ('SELECT * FROM product AS a'. ' Inner Join medical AS b on a.medicalID=b.ID'
         . ' WHERE a.ID=:ID', array (':ID'=>$id                     
     ));
@@ -100,16 +86,6 @@ class Product
         // Текст запроса к БД
         return R::getCell('SELECT count(ID) AS count FROM product WHERE status="1" AND categoryID= :categoryID', array(':categoryID'=>$categoryId));
 
-        // Используется подготовленный запрос
-        /*$result = $db->prepare($sql);
-        $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
-
-        // Выполнение коменды
-        $result->execute();*/
-
-        // Возвращаем значение count - количество
-        // $row = $result->fetch();
-        //return $row['count'];
     }
 
     /**
@@ -119,10 +95,9 @@ class Product
      */
     public static function getProdustsByIds($idsArray)
     {   
-        // Соединение с БД
-        // $db = Db::getConnection();
+       
         // Превращаем массив в строку для формирования условия в запросе
-        if ($idArray) 
+        if ($idsArray) 
         {
             $idsString = implode(',', $idsArray);
         }
@@ -134,22 +109,7 @@ class Product
             array(':Ids'=>$idsString)
         );
 
-        //$result = $db->query($sql);
-
-        // Указываем, что хотим получить данные в виде массива
-        //$result->setFetchMode(PDO::FETCH_ASSOC);
-
-        // Получение и возврат результатов
-       /* $i = 0;
-        $products = array();
-        while ($row = $result->fetch()) {
-            $products[$i]['id'] = $row['id'];
-            $products[$i]['code'] = $row['code'];
-            $products[$i]['name'] = $row['name'];
-            $products[$i]['price'] = $row['price'];
-            $i++;
-        }
-        return $products;*/
+       
     }
 
     /**
@@ -158,8 +118,7 @@ class Product
      */
     public static function getRecommendedProducts()
     {
-        // Соединение с БД
-       // $db = Db::getConnection();
+       
 
         // Получение и возврат результатов
         return R::getAll ('SELECT a.ID, a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
@@ -175,8 +134,7 @@ class Product
      */
     public static function getProductsList()
     {
-        // Соединение с БД
-       //$db = Db::getConnection();
+        
 
         // Получение и возврат результатов
         return R::getAll ('SELECT a.ID,a.price,a.code, b.nameOfMedical, a.image FROM product a'
@@ -192,9 +150,7 @@ class Product
      */
     public static function deleteProductById($id)
     {
-        // Соединение с БД
-        // $db = Db::getConnection();
-
+        
         // Текст запроса к БД
         return R::exec('DELETE FROM product WHERE ID = :id');
 
@@ -210,8 +166,7 @@ class Product
      */
     public static function updateProductById($id, $options)
     {
-        // Соединение с БД
-        // $db = Db::getConnection();
+       
 
         // Текст запроса к БД
         return R::exec("UPDATE product
@@ -242,20 +197,6 @@ class Product
             ':image' => $image
         ));
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-       /* $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
-        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
-        $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
-        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
-        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
-        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
-        $result->bindParam(':availability', $options['availability'], PDO::PARAM_INT);
-        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
-        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
-        $result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_INT);
-        $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
-        return $result->execute();*/
     }
 
     /**
@@ -265,8 +206,7 @@ class Product
      */
     public static function createProduct($options)
     {
-        // Соединение с БД
-        //$db = Db::getConnection();
+        
 
         // Текст запроса к БД
         return R::exec ('INSERT INTO product '
@@ -288,25 +228,7 @@ class Product
                 ':ID' => $ID,
                 ':image' => $image
             ));
-
-        // Получение и возврат результатов. Используется подготовленный запрос
-       /* $result = $db->prepare($sql);
-        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
-        $result->bindParam(':code', $options['code'], PDO::PARAM_STR);
-        $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
-        $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
-        $result->bindParam(':brand', $options['brand'], PDO::PARAM_STR);
-        $result->bindParam(':availability', $options['availability'], PDO::PARAM_INT);
-        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
-        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
-        $result->bindParam(':is_recommended', $options['is_recommended'], PDO::PARAM_INT);
-        $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
-        if ($result->execute()) {
-            // Если запрос выполенен успешно, возвращаем id добавленной записи
-            return $db->lastInsertId();
-        }
-        // Иначе возвращаем 0
-        return 0;*/
+      
     }
 
     /**

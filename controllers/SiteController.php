@@ -26,7 +26,7 @@ class SiteController
     }
 
     /**
-     * Action для страницы "Контакты"
+     * Action для страницы "Напишите нам"
      */
     public function actionContact()
     {

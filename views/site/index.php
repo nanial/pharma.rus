@@ -51,7 +51,7 @@
 
                 </div><!--features_items-->
 
-                <div class="recommended_items"><!--recommended_items-->
+                <div class="recommended_items"><!--Отечественные_items-->
                     <h2 class="title text-center">Отечественные препараты </h2>
                     
                     <div class="cycle-slideshow" 
@@ -93,7 +93,7 @@
                     </a>
 
                 </div>
-            </div><!--/recommended_items-->
+            </div><!--/Отечественные_items-->
 
         </div>
     </div>

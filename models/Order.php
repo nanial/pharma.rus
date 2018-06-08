@@ -33,16 +33,7 @@ class Order
         }
 
         return true;
-        // $products = json_encode($products);
-
-        // $result = $db->prepare($sql);
-        // $result->bindParam(':user_name', $userName, PDO::PARAM_STR);
-        // $result->bindParam(':user_phone', $userPhone, PDO::PARAM_STR);
-        // $result->bindParam(':user_comment', $userComment, PDO::PARAM_STR);
-        // $result->bindParam(':user_id', $userId, PDO::PARAM_STR);
-        // $result->bindParam(':products', $products, PDO::PARAM_STR);
-
-        // return $result->execute();
+     
     }
 
     /**
@@ -51,9 +42,7 @@ class Order
      */
     public static function getOrdersList()
     {
-        // Соединение с БД
-        //$db = Db::getConnection();
-
+       
         // Получение и возврат результатов
         return R :: getAll('SELECT ID, userComment, userID, date, status FROM orders ORDER BY id DESC');
        
@@ -90,23 +79,11 @@ class Order
      */
     public static function getOrderById($id)
     {
-        // Соединение с БД
-        //$db = Db::getConnection();
+       
 
         // Текст запроса к БД
         return  R :: getAll( 'SELECT * FROM orders WHERE ID = :ID', array(':ID'=>$id));
 
-       // $result = $db->prepare($sql);
-        //$result->bindParam(':id', $id, PDO::PARAM_INT);
-
-        // Указываем, что хотим получить данные в виде массива
-       // $result->setFetchMode(PDO::FETCH_ASSOC);
-
-        // Выполняем запрос
-       // $result->execute();
-
-        // Возвращаем данные
-        //return $result->fetch();
     }
 
     /**
@@ -116,16 +93,11 @@ class Order
      */
     public static function deleteOrderById($id)
     {
-        // Соединение с БД
-        //$db = Db::getConnection();
-
+       
         // Текст запроса к БД
        return R::exec ('DELETE FROM orders WHERE ID = :ID', array (':ID'=>$id));
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-       // $result = $db->prepare($sql);
-        //$result->bindParam(':id', $id, PDO::PARAM_INT);
-       // return $result->execute();
+       
     }
 
     /**
@@ -140,8 +112,7 @@ class Order
      */
     public static function updateOrderById($id, $userComment, $userID,  $date, $status)
     {
-        // Соединение с БД
-       // $db = Db::getConnection();
+       
 
         // Текст запроса к БД
         return R::exec( "UPDATE orders
@@ -153,15 +124,7 @@ class Order
             WHERE id = :id", array (':userComment'=>$userComment, ':userID'=>$userId, ':date'=>$date, ':status' => $status));
 
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-        /*$result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
-        $result->bindParam(':user_name', $userName, PDO::PARAM_STR);
-        $result->bindParam(':user_phone', $userPhone, PDO::PARAM_STR);
-        $result->bindParam(':user_comment', $userComment, PDO::PARAM_STR);
-        $result->bindParam(':date', $date, PDO::PARAM_STR);
-        $result->bindParam(':status', $status, PDO::PARAM_INT);
-        return $result->execute();*/
+       
     }
 
 }

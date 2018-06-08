@@ -44,7 +44,7 @@
                         <select name="category_id">
                             <?php if (is_array($categoriesList)): ?>
                                 <?php foreach ($categoriesList as $category): ?>
-                                    <option value="<?php echo $category['id']; ?>">
+                                    <option value="<?php echo $category['ID']; ?>">
                                         <?php echo $category['name']; ?>
                                     </option>
                                 <?php endforeach; ?>
