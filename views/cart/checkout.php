@@ -31,7 +31,7 @@
                         <p>Заказ оформлен. Мы Вам перезвоним.</p>
                     <?php else: ?>
 
-                        <p>Выбрано товаров: <?php echo $totalQuantity; ?>, на сумму: <?php echo $totalPrice; ?>, бел.руб</p><br/>
+                        <p>Выбрано товаров: <?php Cart::countItems(); ?>, на сумму: <?php echo $totalPrice; ?>, бел.руб</p><br/>
 
                         <?php if (!$result): ?>                        
 

@@ -31,7 +31,9 @@ class Router
     private function getURI()
     {
         if (!empty($_SERVER['REQUEST_URI'])) {
-            return trim($_SERVER['REQUEST_URI'], '/');
+            $uri = preg_replace("/\?.*/", '', $_SERVER['REQUEST_URI']);
+            $trim_uri = trim($uri, '/');
+            return $trim_uri; 
         }
     }
 
@@ -45,7 +47,6 @@ class Router
 
         // Проверяем наличие такого запроса в массиве маршрутов (routes.php)
         foreach ($this->routes as $uriPattern => $path) {
-
             // Сравниваем $uriPattern и $uri
             if (preg_match("~$uriPattern~", $uri)) {
 

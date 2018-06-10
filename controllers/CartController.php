@@ -61,10 +61,8 @@ class CartController
             // Если в корзине есть товары, получаем полную информацию о товарах для списка
             // Получаем массив только с идентификаторами товаров
             $productsIds = array_keys($productsInCart);
-
             // Получаем массив с полной информацией о необходимых товарах
             $products = Product::getProdustsByIds($productsIds);
-
             // Получаем общую стоимость товаров
             $totalPrice = Cart::getTotalPrice($products);
         }
@@ -72,6 +70,19 @@ class CartController
         // Подключаем вид
         require_once(ROOT . '/views/cart/index.php');
         return true;
+    }
+
+    public function actionClean()
+    {
+        Cart::clear();
+        // Список категорий для левого меню
+        $categories = Category::getCategoriesList();
+
+        // Получим идентификаторы и количество товаров в корзине
+        $productsInCart = Cart::getProducts();
+
+
+            
     }
 
     /**
@@ -97,8 +108,6 @@ class CartController
         $products = Product::getProdustsByIds($productsIds);
         $totalPrice = Cart::getTotalPrice($products);
 
-        // Количество товаров
-        $totalQuantity = Cart::countItems();
 
         // Поля для формы
         $userComment = false;

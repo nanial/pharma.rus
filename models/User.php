@@ -192,7 +192,7 @@ class User
     {
        
         // Текст запроса к БД
-        return R::getAll( 'SELECT name FROM user WHERE ID = :ID',  array(':ID'=>$id        
+        return R::getAll( 'SELECT * FROM user WHERE ID = :ID',  array(':ID'=>$id        
         ))[0];
         
        

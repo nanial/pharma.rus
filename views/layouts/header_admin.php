@@ -6,7 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <title>Админпанель</title>
-        <link href="/template/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/template/css/bootstrap2.min.css" rel="stylesheet">
         <link href="/template/css/font-awesome.min.css" rel="stylesheet">
         <link href="/template/css/prettyPhoto.css" rel="stylesheet">
         <link href="/template/css/price-range.css" rel="stylesheet">

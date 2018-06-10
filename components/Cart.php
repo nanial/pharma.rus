@@ -23,10 +23,10 @@ class Cart
         // Если в корзине уже есть товары (они хранятся в сессии)
         if (isset($_SESSION['products']) && $_SESSION['products'] != "") {
             // То заполним наш массив товарами
+            file_put_contents('log.txt', var_export($_SESSION['products'], true).PHP_EOL, FILE_APPEND);
             $productsInCart = $_SESSION['products'];
         }
 
-        file_put_contents('log.txt', $_SESSION['products'].PHP_EOL, FILE_APPEND);
         // Проверяем есть ли уже такой товар в корзине 
         if (array_key_exists($id, $productsInCart)) {
             // Если такой товар есть в корзине, но был добавлен еще раз, увеличим количество на 1
@@ -40,7 +40,7 @@ class Cart
         $_SESSION['products'] = $productsInCart;
 
         // Возвращаем количество товаров в корзине
-        return self::countItems();
+        self::countItems();
     }
 
     /**
@@ -57,10 +57,11 @@ class Cart
             foreach ($_SESSION['products'] as $id => $quantity) {
                 $count = $count + $quantity;
             }
-            return $count;
+            file_put_contents('log.txt', var_export($count, true).PHP_EOL, FILE_APPEND);
+            echo $count;
         } else {
             // Если товаров нет, вернем 0
-            return 0;
+            echo 0;;
         }
     }
 

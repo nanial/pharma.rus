@@ -95,20 +95,16 @@ class Product
      */
     public static function getProdustsByIds($idsArray)
     {   
-       
-        // Превращаем массив в строку для формирования условия в запросе
-        if ($idsArray) 
-        {
-            $idsString = implode(',', $idsArray);
-        }
-        
-        // Текст запроса к БД
-        return R::getAll ('SELECT a.ID, a.price, a.code, b.nameOfMedical, a.image FROM product a '
-                . 'Inner Join medical b on a.medicalID=b.ID '
-                . 'WHERE a.status = 1 AND a.ID in (:Ids) ORDER BY a.ID ASC ', 
-            array(':Ids'=>$idsString)
-        );
 
+        $inQuery = implode(',', array_fill(0, count($idsArray), '?'));
+
+        $sql = 'SELECT a.ID, a.price, a.code, b.nameOfMedical, a.image FROM product a '
+                . 'Inner Join medical b on a.medicalID=b.ID '
+                . 'WHERE a.status = 1 AND a.ID in ('.$inQuery.') ORDER BY a.ID ASC ';
+        $args = array($sql, $idsArray);
+
+        return call_user_func_array('R::getAll', $args);
+        // Текст запроса к БД
        
     }
 

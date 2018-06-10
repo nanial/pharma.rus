@@ -15,6 +15,7 @@ class Db
      */
     public static function getConnection()
     {
+        
         // Получаем параметры подключения из файла
         $paramsPath = ROOT . '/config/db_params.php';
         $params = include($paramsPath);

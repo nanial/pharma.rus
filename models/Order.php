@@ -112,8 +112,6 @@ class Order
      */
     public static function updateOrderById($id, $userComment, $userID,  $date, $status)
     {
-       
-
         // Текст запроса к БД
         return R::exec( "UPDATE orders
             SET 
@@ -122,9 +120,22 @@ class Order
                 date = :date, 
                 status = :status 
             WHERE id = :id", array (':userComment'=>$userComment, ':userID'=>$userId, ':date'=>$date, ':status' => $status));
+    }
 
-
-       
+    public static function getOrderCountByProduct()
+    {
+        $result = R::getAll('SELECT med.nameOfMedical, sum(po.Quantity) '
+            .'FROM productsToOrders po '
+            .'inner join product pr on po.productID = pr.ID '
+            .'inner join medical med on pr.medicalID = med.ID '
+            .'GROUP BY med.nameOfMedical');
+        $ret = array();
+        foreach ($result as $val)
+        {
+            $ret['name'] = $val['nameOfMedical'];
+            $ret['count'] = $val['sum(po.Quantity)'];
+        }
+        return $ret;
     }
 
 }
