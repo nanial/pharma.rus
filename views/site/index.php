@@ -38,7 +38,7 @@
                                                 <?php echo $product['nameOfMedical']; ?>
                                             </a>
                                         </p>
-                                        <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $product['ID']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $product['ID']; ?>"><i class="fa fa-shopping-cart"></i>Купить</a>
                                     </div>
                                     <?php if ($product['isNew']): ?>
                                         <img src="/template/images/home/new.png" class="new" alt="" />
@@ -74,7 +74,7 @@
                                                 <?php echo $product['nameOfMedical']; ?>
                                             </a>
                                             <br/><br/>
-                                            <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $sliderItem['ID']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                            <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $sliderItem['ID']; ?>"><i class="fa fa-shopping-cart"></i>Купить</a>
                                         </div>
                                         <?php if ($sliderItem['isNew']): ?>
                                             <img src="/template/images/home/new.png" class="new" alt="" />

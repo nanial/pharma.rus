@@ -91,7 +91,7 @@ a#scrollUp i{
 }
 
 .contactinfo ul li a{
-    font-size: 12px;
+    font-size: 14px;
     color: #0f6d8a;
    font-family: 'Tenor Sans', sans-serif;;
 }
@@ -213,9 +213,9 @@ a#scrollUp i{
 
 
 .shop-menu ul li a {
-    background: #FFFFFF;
-    color: #10a599;
-   font-family: 'Tenor Sans', sans-serif;;
+    color: rgb(65, 11, 214);
+    font-family: 'Tenor Sans', sans-serif;
+    background: rgb(149, 240, 243);
     font-size: 14px;
     font-weight: 300;
     padding:0;
@@ -230,8 +230,9 @@ a#scrollUp i{
 
 
 .shop-menu ul li a:hover {
-    color:#0fc6fe;
-    background:#fff;
+    color: rgb(65, 11, 214);
+    font-family: 'Tenor Sans', sans-serif;
+    background: rgb(149, 240, 243);
 }
 
 
@@ -255,8 +256,9 @@ a#scrollUp i{
 
 .mainmenu ul li a {
     color: #0f39ac;
-   font-family: 'Tenor Sans', sans-serif;;
-    font-size: 17px;
+    font-family: 'Tenor Sans', sans-serif;
+    background-color: rgb(149, 240, 243);
+    font-size: 20px;
     font-weight: 300;
     padding: 0;
     padding-bottom: 10px;
@@ -673,10 +675,12 @@ ul.sub-menu {
     margin-bottom: 35px;
     padding-bottom: 20px;
     padding-top: 15px;
+    background: rgb(149, 240, 243);
 }
 .left-sidebar h2, .brands_products h2 {
     color: rgb(65, 11, 214);
-   font-family: 'Tenor Sans', sans-serif;;
+    font-family: 'Tenor Sans', sans-serif;
+    background: rgb(149, 240, 243);
     font-size: 18px;
     font-weight: 700;
     margin: 0 auto 30px;
@@ -712,7 +716,7 @@ ul.sub-menu {
 h2.title:before{
     content: " ";
     position: absolute;
-    background: #fff;
+    background: rgb(149, 240, 243);
     bottom: -6px;
     width: 220px;
     height: 30px;
@@ -722,7 +726,7 @@ h2.title:before{
 }
 
 .category-products .panel {
-    background-color: #FFFFFF;
+    background-color:rgb(149, 240, 243);
     border: 0px;
     border-radius: 0px;
     box-shadow:none;
@@ -730,7 +734,7 @@ h2.title:before{
 }
 
 .category-products .panel-default .panel-heading {
-    background-color: #FFFFFF;
+    background-color:rgb(149, 240, 243);
     border: 0 none;
     color: #FFFFFF;
     padding: 5px 20px;
@@ -855,7 +859,8 @@ h2.title:before{
 
 h2.title {
     color: rgb(65, 11, 214);
-   font-family: 'Tenor Sans', sans-serif;;
+    background: rgb(149, 240, 243);
+    font-family: 'Tenor Sans', sans-serif;;
     font-size: 18px;
     font-weight: 700;
     margin: 0 15px;
@@ -888,7 +893,7 @@ h2.title {
     font-weight: 700;
 }
 .product-overlay h2{
-    color: #fff;
+    color:rgb(149, 240, 243);
    font-family: 'Tenor Sans', sans-serif;;
     font-size: 24px;
     font-weight: 700;
@@ -938,17 +943,17 @@ h2.title {
 }
 
 .product-overlay .add-to-cart {
-    background:#fff;
+    background:rgb(149, 240, 243);
     border: 0 none;
     border-radius: 0;
     color: rgb(65, 11, 214);
-   font-family: 'Tenor Sans', sans-serif;;
+    font-family: 'Tenor Sans', sans-serif;;
     font-size: 15px;
     margin-bottom: 25px;
 }
 
 .product-overlay .add-to-cart:hover {
-    background:#fff;
+    background:rgb(149, 240, 243);
     color: rgb(65, 11, 214);
 }
 
@@ -957,26 +962,26 @@ h2.title {
    font-family: 'Tenor Sans', sans-serif;;
     font-size: 14px;
     font-weight: 400;
-    color: #fff;
+    color:rgb(149, 240, 243);
 }
 
 
 
 .add-to-cart, .checkout, .back {
-    background:#F5F5ED;
+    background:rgb(6, 109, 109);
     border: 0 none;
-    border-radius: 0;
-    color: #696763;
+    border-radius: 5;
+    color: #0a0803e8;
    font-family: 'Tenor Sans', sans-serif;;
-    font-size: 15px;
+    font-size: 18px;
     margin-bottom: 25px;
 }
 
 .add-to-cart:hover {
     background: rgb(65, 11, 214);
     border: 0 none;
-    border-radius: 0;
-    color: #FFFFFF;
+    border-radius: 5;
+    color: rgb(149, 240, 243);
 }
 
 .add-to{
@@ -989,7 +994,7 @@ h2.title {
 
 .add-to-cart:hover {
     background: rgb(65, 11, 214);
-    color: #FFFFFF;
+    color: rgb(149, 240, 243);
 }
 
 .choose {
@@ -1028,7 +1033,7 @@ h2.title {
 
 .category-tab ul li a {
     border: 0 none;
-    border-radius: 0;
+    border-radius: 5;
     color: #B3AFA8;
     display: block;
    font-family: 'Tenor Sans', sans-serif;;
@@ -1348,7 +1353,7 @@ h2.title {
 }
 
 #reviews ul li a:hover{
-    background:#fff;
+    background:rgb(149, 240, 243);
     color:rgb(46, 63, 138);
 }
 

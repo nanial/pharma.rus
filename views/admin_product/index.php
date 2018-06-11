@@ -30,12 +30,12 @@
                 </tr>
                 <?php foreach ($productsList as $product): ?>
                     <tr>
-                        <td><?php echo $product['id']; ?></td>
+                        <td><?php echo $product['ID']; ?></td>
                         <td><?php echo $product['code']; ?></td>
                         <td><?php echo $product['name']; ?></td>
                         <td><?php echo $product['price']; ?></td>  
-                        <td><a href="/admin/product/update/<?php echo $product['id']; ?>" title="Редактировать"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td><a href="/admin/product/delete/<?php echo $product['id']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>
+                        <td><a href="/admin/product/update/<?php echo $product['ID']; ?>" title="Редактировать"><i class="fa fa-pencil-square-o"></i></a></td>
+                        <td><a href="/admin/product/delete/<?php echo $product['ID']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>

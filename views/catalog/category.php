@@ -26,7 +26,7 @@
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Последние товары</h2>
+                    <h2 class="title text-center"> <?php echo $categoryItem['name']; ?></h2>
 
                     <?php foreach ($categoryProducts as $product): ?>
                         <div class="col-sm-4">
@@ -40,7 +40,7 @@
                                                 <?php echo $product['nameOfMedical']; ?>
                                             </a>
                                         </p>
-                                        <a href="/cart/add/<?php echo $product['ID']; ?>" class="btn btn-default add-to-cart" data-id="<?php echo $product['ID']; ?>"><i class="fa fa-shopping-cart"></i>В корзину</a>
+                                        <a href="/cart/add/<?php echo $product['ID']; ?>" class="btn btn-default add-to-cart" data-id="<?php echo $product['ID']; ?>"><i class="fa fa-shopping-cart"></i>Купить</a>
                                     </div>
                                     <?php if ($product['isNew']): ?>
                                         <img src="/template/images/home/new.png" class="new" alt="" />

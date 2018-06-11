@@ -119,7 +119,7 @@ class Order
                 userComment = :userComment,              
                 date = :date, 
                 status = :status 
-            WHERE id = :id", array (':userComment'=>$userComment, ':userID'=>$userId, ':date'=>$date, ':status' => $status));
+            WHERE ID = :ID", array (':userComment'=>$userComment, ':userID'=>$userId, ':date'=>$date, ':status' => $status));
     }
 
     public static function getOrderCountByProduct()
