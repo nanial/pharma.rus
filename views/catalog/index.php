@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Каталог</h2>
+                   
                     <div class="panel-group category-products">
                         <?php foreach ($categories as $categoryItem): ?>
                             <div class="panel panel-default">
@@ -18,13 +18,14 @@
                                 </div>
                             </div>
                         <?php endforeach; ?>
+                        
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center"> <?php echo $categoryItem['name']; ?></h2>
+                    <h2 class="title text-center"> Каталог</h2>
                     
                     <?php foreach ($latestProducts as $product): ?>
                         <div class="col-sm-4">
@@ -32,7 +33,7 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="<?php echo Product::getImage($product['ID']); ?>" alt="" />
-                                        <h2>бел.руб <?php echo $product['price'];?></h2>
+                                        <h2> <?php echo $product['price'];?>  бел.руб</h2>
                                         <p>
                                             <a href="/product/<?php echo $product['ID'];?>">
                                                 <?php echo $product['nameOfMedical'];?>
@@ -53,6 +54,11 @@
                     <?php endforeach;?>                   
 
                 </div><!--features_items-->
+                    <ul class="pagination">
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="/catalog/page-2">2</a></li>
+                        <li><a href="/catalog/page-3">&gt;</a></li>
+                    </ul>
 
 
             </div>

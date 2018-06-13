@@ -38,15 +38,15 @@ class AdminProductController extends AdminBase
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
-            $options['name'] = $_POST['name'];
+            $options['nameOfMedical'] = $_POST['nameOfMedical'];
             $options['code'] = $_POST['code'];
             $options['price'] = $_POST['price'];
-            $options['category_id'] = $_POST['category_id'];
-            $options['brand'] = $_POST['brand'];
+            $options['categoryID'] = $_POST['categoryID'];
+            $options['unitName'] = $_POST['unitName'];
             $options['availability'] = $_POST['availability'];
             $options['description'] = $_POST['description'];
-            $options['is_new'] = $_POST['is_new'];
-            $options['is_recommended'] = $_POST['is_recommended'];
+            $options['isNew'] = $_POST['isNew'];
+            $options['isRecommended'] = $_POST['isRecommended'];
             $options['status'] = $_POST['status'];
 
             // Флаг ошибок в форме
@@ -99,15 +99,15 @@ class AdminProductController extends AdminBase
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы редактирования. При необходимости можно валидировать значения
-            $options['name'] = $_POST['name'];
+            $options['name'] = $_POST['nameOfMedical'];
             $options['code'] = $_POST['code'];
             $options['price'] = $_POST['price'];
-            $options['category_id'] = $_POST['category_id'];
-            $options['brand'] = $_POST['brand'];
+            $options['category_id'] = $_POST['categoryID'];
+            $options['brand'] = $_POST['unitName'];
             $options['availability'] = $_POST['availability'];
             $options['description'] = $_POST['description'];
-            $options['is_new'] = $_POST['is_new'];
-            $options['is_recommended'] = $_POST['is_recommended'];
+            $options['is_new'] = $_POST['isNew'];
+            $options['is_recommended'] = $_POST['isRecommended'];
             $options['status'] = $_POST['status'];
 
             // Сохраняем изменения

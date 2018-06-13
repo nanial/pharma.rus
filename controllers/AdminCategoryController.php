@@ -23,9 +23,7 @@ class AdminCategoryController extends AdminBase
         return true;
     }
 
-    /**
-     * Action для страницы "Добавить категорию"
-     */
+    
     public function actionCreate()
     {
         // Проверка доступа
@@ -62,9 +60,7 @@ class AdminCategoryController extends AdminBase
         return true;
     }
 
-    /**
-     * Action для страницы "Редактировать категорию"
-     */
+    
     public function actionUpdate($id)
     {
         // Проверка доступа

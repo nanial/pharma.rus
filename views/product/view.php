@@ -41,7 +41,7 @@
                                 <p>Код препарата: <?php echo $product['code']; ?></p>
                                 <span>
                                     <span> <?php echo $product['price']; ?> бел.руб</span>
-                                    <a href="#" data-id="<?php echo $product['id']; ?>"
+                                    <a href="#" data-id="<?php echo $product['ID']; ?>"
                                        class="btn btn-default add-to-cart">
                                         <i class="fa fa-shopping-cart"></i>Купить
                                     </a>

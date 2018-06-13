@@ -15,7 +15,7 @@
 
             <a href="/admin/product/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить товар</a>
             
-            <h4>Список товаров</h4>
+            <h4>Список препаратов</h4>
 
             <br/>
 
@@ -32,7 +32,7 @@
                     <tr>
                         <td><?php echo $product['ID']; ?></td>
                         <td><?php echo $product['code']; ?></td>
-                        <td><?php echo $product['name']; ?></td>
+                        <td><?php echo $product['nameOfMedical']; ?></td>
                         <td><?php echo $product['price']; ?></td>  
                         <td><a href="/admin/product/update/<?php echo $product['ID']; ?>" title="Редактировать"><i class="fa fa-pencil-square-o"></i></a></td>
                         <td><a href="/admin/product/delete/<?php echo $product['ID']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>

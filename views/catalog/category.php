@@ -26,8 +26,7 @@
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center"> <?php echo $categoryItem['name']; ?></h2>
-
+                    <h2 class="title text-center"> ПОСЛЕДНИЕ ТОВАРЫ</h2>
                     <?php foreach ($categoryProducts as $product): ?>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">

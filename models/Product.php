@@ -17,9 +17,7 @@ class Product
      */
     public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
     {
-        // Соединение с БД
-        //$db = Db::getConnection();
-
+     
         // Текст запроса к БД
         return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
                 . 'Inner Join medical b on a.medicalID=b.ID '

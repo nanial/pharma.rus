@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Tenor Sans', sans-serif;;
-    background:;
+    background:rgb(149, 240, 243);
     position: relative;
     font: weight 500px;
 }
@@ -673,8 +673,9 @@ ul.sub-menu {
 .category-products {
     border: 1px solid #F7F7F0;
     margin-bottom: 35px;
+    margin-left: 5px;
     padding-bottom: 20px;
-    padding-top: 15px;
+    padding-top: 25px;
     background: rgb(149, 240, 243);
 }
 .left-sidebar h2, .brands_products h2 {

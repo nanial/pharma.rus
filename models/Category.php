@@ -16,55 +16,22 @@ class Category
         // Запрос к БД
         return R::getAll('SELECT ID, name FROM category WHERE status = "1" ORDER BY sort_order, name ASC');
 
-        // Получение и возврат результатов
-        // $i = 0;
-        // $categoryList = array();
-        // while ($row = $result->fetch()) {
-        //     $categoryList[$i]['id'] = $row['id'];
-        //     $categoryList[$i]['name'] = $row['name'];
-        //     $i++;
-        // }
-        // return $categoryList;
     }
 
-    /**
-     * Возвращает массив категорий для списка в админпанели <br/>
-     * (при этом в результат попадают и включенные и выключенные категории)
-     * @return array <p>Массив категорий</p>
-     */
+  
     public static function getCategoriesListAdmin()
     {
 
         // Запрос к БД
-        return R::getAll('SELECT ID, name, sort_order, status FROM category ORDER BY sort_order ASCs');
-
-        // Получение и возврат результатов
-        // $categoryList = array();
-        // $i = 0;
-        // while ($row = $result->fetch()) {
-        //     $categoryList[$i]['id'] = $row['id'];
-        //     $categoryList[$i]['name'] = $row['name'];
-        //     $categoryList[$i]['sort_order'] = $row['sort_order'];
-        //     $categoryList[$i]['status'] = $row['status'];
-        //     $i++;
-        // }
-        // return $categoryList;
+        return R::getAll('SELECT ID, name, sort_order, status FROM category ORDER BY sort_order ASC');
     }
 
-    /**
-     * Удаляет категорию с заданным id
-     * @param integer $id
-     * @return boolean <p>Результат выполнения метода</p>
-     */
+   
     public static function deleteCategoryById($id)
     {
         // Текст запроса к БД
         return R::exec('DELETE FROM category WHERE ID = ?', array($id));
 
-        // // Получение и возврат результатов. Используется подготовленный запрос
-        // $result = $db->prepare($sql);
-        // $result->bindParam(':id', $id, PDO::PARAM_INT);
-        // return $result->execute();
     }
 
     /**
@@ -81,13 +48,7 @@ class Category
         return R::exec("UPDATE category SET name = ?, sort_order = ?, status = ? WHERE ID = ?",
             array($name, $sortOrder, $status, $id));
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-        // $result = $db->prepare($sql);
-        // $result->bindParam(':id', $id, PDO::PARAM_INT);
-        // $result->bindParam(':name', $name, PDO::PARAM_STR);
-        // $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
-        // $result->bindParam(':status', $status, PDO::PARAM_INT);
-        // return $result->execute();
+       
     }
 
     /**
