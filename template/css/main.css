@@ -5,6 +5,11 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,300,600,700);
 @import url(http://fonts.googleapis.com/css?family=Abel);
 
+   .container {
+    float:left; /* Выравнивание по левому краю */
+    margin: 15px 15px 15px 0; /* Отступы вокруг картинки */
+   }
+   
 body {
     font-family: 'Tenor Sans', sans-serif;;
     background:rgb(149, 240, 243);
@@ -926,7 +931,7 @@ h2.title {
     transition: height 500ms ease 0s;
     width: 100%;
     display: block;
-    opacity:;
+    
 }
 
 .single-products:hover .product-overlay {
