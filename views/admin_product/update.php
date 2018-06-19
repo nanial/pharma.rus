@@ -8,7 +8,7 @@
 
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="/admin">Админпанель</a></li>
+                   
                     <li><a href="/admin/product">Управление товарами</a></li>
                     <li class="active">Редактировать товар</li>
                 </ol>
@@ -37,7 +37,7 @@
                             <?php if (is_array($categoriesList)): ?>
                                 <?php foreach ($categoriesList as $category): ?>
                                     <option value="<?php echo $category['ID']; ?>" 
-                                        <?php if ($product['categoryId'] == $category['ID']) echo ' selected="selected"'; ?>>
+                                        <?php if ($product['categoryID'] == $category['ID']) echo ' selected="selected"'; ?>>
                                         <?php echo $category['name']; ?>
                                     </option>
                                 <?php endforeach; ?>

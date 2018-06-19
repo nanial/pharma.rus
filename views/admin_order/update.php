@@ -8,14 +8,14 @@
 
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="/admin">Админпанель</a></li>
+                   
                     <li><a href="/admin/order">Управление заказами</a></li>
-                    <li class="active">Редактировать заказ</li>
+                    
                 </ol>
             </div>
 
 
-            <h4>Редактировать заказ #<?php echo $id; ?></h4>
+            <h4>Редактировать заказ <?php echo $id; ?></h4>
 
             <br/>
 
@@ -23,14 +23,12 @@
                 <div class="login-form">
                     <form action="#" method="post">
 
-                        <p>Имя клиента</p>
-                        <input type="text" name="userName" placeholder="" value="<?php echo $order['user_name']; ?>">
+                        <p>ID клиента</p>
+                        <input type="text" name="userName" placeholder="" value="<?php echo $order['ID']; ?>">
 
-                        <p>Телефон клиента</p>
-                        <input type="text" name="userPhone" placeholder="" value="<?php echo $order['user_phone']; ?>">
+                        <p>Комментарии клиента</p>
+                        <input type="text" name="userEmail" placeholder="" value="<?php echo $order['userComment']; ?>">
 
-                        <p>Комментарий клиента</p>
-                        <input type="text" name="userComment" placeholder="" value="<?php echo $order['user_comment']; ?>">
 
                         <p>Дата оформления заказа</p>
                         <input type="text" name="date" placeholder="" value="<?php echo $order['date']; ?>">

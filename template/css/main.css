@@ -11,8 +11,7 @@
    }
    
 body {
-    font-family: 'Tenor Sans', sans-serif;;
-    background:rgb(149, 240, 243);
+    font-family: 'Tenor Sans', sans-serif;;    
     position: relative;
     font: weight 500px;
 }
@@ -370,6 +369,9 @@ ul.sub-menu {
 #footer {
     background: #F0F0E9;
     height: 50px;
+    width: 100%;
+    position: fixed; /* Фиксированное положение */
+    left: 0; bottom: 0; 
 }
 
 

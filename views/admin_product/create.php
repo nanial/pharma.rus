@@ -8,14 +8,14 @@
 
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="/admin">Админпанель</a></li>
+                    
                     <li><a href="/admin/product">Управление товарами</a></li>
-                    <li class="active">Редактировать товар</li>
+                  
                 </ol>
             </div>
 
 
-            <h4>Добавить новый товар</h4>
+            <h4>Добавление нового товара</h4>
 
             <br/>
 
@@ -32,7 +32,7 @@
                     <form action="#" method="post" enctype="multipart/form-data">
 
                         <p>Наименование препарата</p>
-                        <input type="text" name="name" placeholder="" value="">
+                        <input type="text" name="nameOfMedical" placeholder="" value="">
 
                         <p>Код/артикул</p>
                         <input type="text" name="code" placeholder="" value="">
@@ -41,7 +41,7 @@
                         <input type="text" name="price" placeholder="" value="">
 
                         <p>Категория</p>
-                        <select name="category_id">
+                        <select name="categoryID">
                             <?php if (is_array($categoriesList)): ?>
                                 <?php foreach ($categoriesList as $category): ?>
                                     <option value="<?php echo $category['ID']; ?>">
@@ -54,7 +54,7 @@
                         <br/><br/>
 
                         <p>Международное непатенотованное наименование</p>
-                        <input type="text" name="brand" placeholder="" value="">
+                        <input type="text" name="unitName" placeholder="" value="">
 
                         <p>Изображение товара</p>
                         <input type="file" name="image" placeholder="" value="">

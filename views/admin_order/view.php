@@ -1,6 +1,7 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
-
-<section>
+<?var_dump ($order);?>
+<?var_dump ($products);?>
+ <section>
     <div class="container">
         <div class="row">
 
@@ -15,7 +16,7 @@
             </div>
 
 
-            <h4>Просмотр заказа #<?php echo $order['id']; ?></h4>
+            <h4>Просмотр заказа #<?php echo $order['ID']; ?></h4>
             <br/>
 
 
@@ -25,26 +26,20 @@
             <table class="table-admin-small table-bordered table-striped table">
                 <tr>
                     <td>Номер заказа</td>
-                    <td><?php echo $order['id']; ?></td>
+                    <td><?php echo $order['ID']; ?></td>
                 </tr>
+                
                 <tr>
-                    <td>Имя клиента</td>
-                    <td><?php echo $order['user_name']; ?></td>
+                        <td>ID клиента</td>
+                        <td><?php echo $order['userID']; ?></td>
                 </tr>
-                <tr>
-                    <td>Телефон клиента</td>
-                    <td><?php echo $order['user_phone']; ?></td>
-                </tr>
+                
+                
                 <tr>
                     <td>Комментарий клиента</td>
-                    <td><?php echo $order['user_comment']; ?></td>
+                    <td><?php echo $order['userComment']; ?></td>
                 </tr>
-                <?php if ($order['user_id'] != 0): ?>
-                    <tr>
-                        <td>ID клиента</td>
-                        <td><?php echo $order['user_id']; ?></td>
-                    </tr>
-                <?php endif; ?>
+                
                 <tr>
                     <td><b>Статус заказа</b></td>
                     <td><?php echo Order::getStatusText($order['status']); ?></td>
@@ -59,19 +54,23 @@
 
             <table class="table-admin-medium table-bordered table-striped table ">
                 <tr>
-                    <th>ID товара</th>
-                    <th>Артикул товара</th>
                     <th>Название</th>
-                    <th>Цена</th>
                     <th>Количество</th>
+                    <th>Артикул товара</th>
+                    <th>Цена</th>
+                    <th>Описание</th>
+                    <th>Статус</th>
+                    
                 </tr>
                 <?php foreach ($products as $product): ?>
                     <tr>
-                        <td><?php echo $product['id']; ?></td>
+                        <td><?php echo $product['nameOfMedical']; ?></td>
+                        <td><?php echo $product['Quantity']; ?></td>
                         <td><?php echo $product['code']; ?></td>
-                        <td><?php echo $product['name']; ?></td>
-                        <td> бел.руб <?php echo $product['price']; ?></td>
-                        <td><?php echo $productsQuantity[$product['id']]; ?></td>
+                        <td><?php echo $product['price']; ?> бел.руб</td>
+                        <td><?php echo $product['description']; ?> </td>
+                        <td><?php echo $product['status']; ?></td>
+                     
                     </tr>
                 <?php endforeach; ?>
             </table>

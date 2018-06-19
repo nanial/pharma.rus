@@ -5,17 +5,10 @@
         <div class="row">
 
             <br/>
-                        
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Админпанель</a></li>
-                    <li class="active">Управление заказами</li>
-                </ol>
-            </div>
-
-            <h4>Список заказов</h4>
-
-            <br/>
+                   
+           
+            <h3>Список заказов</h3>
+            
 
             
             <table class="table-bordered table-striped table">

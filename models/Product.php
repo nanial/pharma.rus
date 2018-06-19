@@ -29,7 +29,18 @@ class Product
         // Получение и возврат результатов
         
     }
-
+    public static function getProductsByOrderId($id)
+    {
+        return R :: getAll(
+           'SELECT pto.Quantity, m.nameOfMedical, '
+           .'p.code, p.price, p.description, p.status '
+           .'FROM productsToOrders pto '
+           .'INNER JOIN product p on pto.productID = p.ID '
+           .'INNER JOIN medical m on p.medicalID = m.ID '
+           .'WHERE pto.orderID = :orderId',
+        array(':orderId' => $id)
+        );
+    }
     /**
      * Возвращает список товаров в указанной категории
      * @param type $categoryId <p>id категории</p>
@@ -55,6 +66,23 @@ class Product
 
        
     }
+    public static function getAdminProductsListByCategory($categoryId, $page = 1)
+    {
+        $limit = Product::SHOW_BY_DEFAULT;
+        // Смещение (для запроса)
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
+       
+
+        // Текст запроса к БД
+        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
+                . 'Inner Join medical b on a.medicalID=b.ID '
+                . 'WHERE a.status = 1 AND a.categoryID = :categoryID ORDER BY a.ID ASC ', array (               
+                ':categoryID'=>$categoryId               
+         ));
+
+       
+    }
 
     /**
      * Возвращает продукт с указанным id
@@ -71,13 +99,23 @@ class Product
     ));
        
     }
-
+    public static function getAdminProductById($id)
+    {
+        
+        // Текст запроса к БД
+      
+        return R::getRow ('SELECT * FROM product AS a'. ' Inner Join medical AS b on a.medicalID=b.ID'
+        . ' WHERE a.ID=:ID', array (':ID'=>$id                     
+    ));
+       
+    }
     /**
      * Возвращаем количество товаров в указанной категории
      * @param integer $categoryId
      * @return integer
      */
-    public static function getTotalProductsInCategory($categoryId)
+    
+    public static function getAdminTotalProductsInCategory($categoryId)
     {
         
 
@@ -92,6 +130,20 @@ class Product
      * @return array <p>Массив со списком товаров</p>
      */
     public static function getProdustsByIds($idsArray)
+    {   
+
+        $inQuery = implode(',', array_fill(0, count($idsArray), '?'));
+
+        $sql = 'SELECT a.ID, a.price, a.code, b.nameOfMedical, a.image FROM product a '
+                . 'Inner Join medical b on a.medicalID=b.ID '
+                . 'WHERE a.status = 1 AND a.ID in ('.$inQuery.') ORDER BY a.ID ASC ';
+        $args = array($sql, $idsArray);
+
+        return call_user_func_array('R::getAll', $args);
+        // Текст запроса к БД
+       
+    }
+    public static function getAdminProdustsByIds($idsArray)
     {   
 
         $inQuery = implode(',', array_fill(0, count($idsArray), '?'));
@@ -121,7 +173,17 @@ class Product
         );
        
     }
+    public static function getAdminRecommendedProducts()
+    {
+       
 
+        // Получение и возврат результатов
+        return R::getAll ('SELECT a.ID, a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
+        . 'Inner Join medical b on a.medicalID=b.ID '
+        . 'WHERE a.status = 1 AND a.isRecommended =1 ORDER BY a.ID DESC'                        
+        );
+       
+    }
     /**
      * Возвращает список товаров
      * @return array <p>Массив с товарами</p>
@@ -131,12 +193,21 @@ class Product
         
 
         // Получение и возврат результатов
-        return R::getAll ('SELECT a.ID,a.price,a.code, b.nameOfMedical, a.image FROM product a'
+        return R::getAll ('SELECT a.ID,a.price,a.code, b.nameOfMedical, a.image FROM product a '
         . 'Inner Join medical b on a.medicalID=b.ID ORDER BY a.ID ASC'                        
         );
        
     }
+    public static function getAdminProductsList()
+    {
+        
 
+        // Получение и возврат результатов
+        return R::getAll ('SELECT a.ID, a.code, b.nameOfMedical, a.price FROM product a '
+        . 'Inner Join medical b on a.medicalID=b.ID ORDER BY a.ID ASC'                        
+        );
+       
+    }
     /**
      * Удаляет товар с указанным id
      * @param integer $id <p>id товара</p>
@@ -148,8 +219,7 @@ class Product
         // Текст запроса к БД
         return R::exec('DELETE FROM product WHERE ID = :id');
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-       
+               
     }
 
     /**

@@ -49,8 +49,7 @@
                     <?php endforeach; ?>
 
 
-                </div><!--features_items-->
-                
+                </div><!--features_items-->                
 
                 <div class="recommended_items"><!--Отечественные_items-->
                     <h2 class="title text-center">Отечественные препараты </h2>

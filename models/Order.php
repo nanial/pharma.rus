@@ -79,10 +79,13 @@ class Order
      */
     public static function getOrderById($id)
     {
+        /*return R::getAll ('SELECT a.ID, a.code, b.nameOfMedical, a.price FROM product a '
+        . 'Inner Join medical b on a.medicalID=b.ID ORDER BY a.ID ASC'                        
+        );*/
        
 
         // Текст запроса к БД
-        return  R :: getAll( 'SELECT * FROM orders WHERE ID = :ID', array(':ID'=>$id));
+        return  R :: getRow( 'SELECT * FROM orders WHERE ID = :ID', array(':ID'=>$id));
 
     }
 
@@ -124,18 +127,20 @@ class Order
 
     public static function getOrderCountByProduct()
     {
-        $result = R::getAll('SELECT med.nameOfMedical, sum(po.Quantity) '
-            .'FROM productsToOrders po '
-            .'inner join product pr on po.productID = pr.ID '
-            .'inner join medical med on pr.medicalID = med.ID '
-            .'GROUP BY med.nameOfMedical');
-        $ret = array();
-        foreach ($result as $val)
-        {
-            $ret['name'] = $val['nameOfMedical'];
-            $ret['count'] = $val['sum(po.Quantity)'];
-        }
-        return $ret;
+    $result = R::getAll('SELECT med.nameOfMedical, sum(po.Quantity) '
+    .'FROM productsToOrders po '
+    .'inner join product pr on po.productID = pr.ID '
+    .'inner join medical med on pr.medicalID = med.ID '
+    .'GROUP BY med.nameOfMedical');
+    $ret = array();
+    foreach ($result as $val)
+    {
+    $rv = array();
+    $rv['name'] = $val['nameOfMedical'];
+    $rv['count'] = $val['sum(po.Quantity)'];
+    array_push($ret, $rv);
+    }
+    return $ret;
     }
 
 }

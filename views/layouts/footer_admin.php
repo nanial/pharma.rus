@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <p class="pull-left">&copy</p>
-                <p class="pull-right">PharmaBY</p>
+                <p class="pull-right">Pharma.rus</p>
             </div>
         </div>
     </div>

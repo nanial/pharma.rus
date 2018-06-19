@@ -6,16 +6,12 @@
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Админпанель</a></li>
-                    <li class="active">Управление категориями</li>
-                </ol>
-            </div>
+           
 
-            <a href="/admin/category/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить категорию</a>
+            <a href="/admin/category/create" class="btn btn-default back">
+            <i class="fa fa-plus"></i> Добавить категорию</a>
             
-            <h4>Список категорий</h4>
+            <h3>Список категорий</h3>
 
             <br/>
 

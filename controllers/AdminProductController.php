@@ -16,11 +16,11 @@ class AdminProductController extends AdminBase
         self::checkAdmin();
 
         // Получаем список товаров
-        $productsList = Product::getProductsList();
+        $productsList = Product::getAdminProductsList();
 
-        // Подключаем вид
         require_once(ROOT . '/views/admin_product/index.php');
         return true;
+
     }
 
     /**
@@ -30,9 +30,9 @@ class AdminProductController extends AdminBase
     {
         // Проверка доступа
         self::checkAdmin();
-
+        $productsList = Product::getAdminProductsList();
         // Получаем список категорий для выпадающего списка
-        $categoriesList = Category::getCategoriesListAdmin();
+       $categoriesList = Category::getCategoriesListAdmin();
 
         // Обработка формы
         if (isset($_POST['submit'])) {
@@ -53,7 +53,7 @@ class AdminProductController extends AdminBase
             $errors = false;
 
             // При необходимости можно валидировать значения нужным образом
-            if (!isset($options['name']) || empty($options['name'])) {
+            if (!isset($options['nameOfMedical']) || empty($options['nameOfMedical'])) {
                 $errors[] = 'Заполните поля';
             }
 
@@ -99,15 +99,15 @@ class AdminProductController extends AdminBase
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы редактирования. При необходимости можно валидировать значения
-            $options['name'] = $_POST['nameOfMedical'];
+            $options['nameOfMedical'] = $_POST['nameOfMedical'];
             $options['code'] = $_POST['code'];
             $options['price'] = $_POST['price'];
-            $options['category_id'] = $_POST['categoryID'];
-            $options['brand'] = $_POST['unitName'];
+            $options['categoryID'] = $_POST['categoryID'];
+            $options['unitName'] = $_POST['unitName'];
             $options['availability'] = $_POST['availability'];
             $options['description'] = $_POST['description'];
-            $options['is_new'] = $_POST['isNew'];
-            $options['is_recommended'] = $_POST['isRecommended'];
+            $options['isNew'] = $_POST['isNew'];
+            $options['isRecommended'] = $_POST['isRecommended'];
             $options['status'] = $_POST['status'];
 
             // Сохраняем изменения

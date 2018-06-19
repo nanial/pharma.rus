@@ -6,16 +6,13 @@
 
             <br/>
 
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin">Админпанель</a></li>
-                    <li class="active">Управление товарами</li>
-                </ol>
-            </div>
+           
 
-            <a href="/admin/product/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить товар</a>
+            <a href="/admin/product/create" class="btn btn-default back">
+                <i class="fa fa-plus"></i> Добавить товар
+            </a>
             
-            <h4>Список препаратов</h4>
+            <h3>Список препаратов</h3>
 
             <br/>
 
@@ -34,8 +31,16 @@
                         <td><?php echo $product['code']; ?></td>
                         <td><?php echo $product['nameOfMedical']; ?></td>
                         <td><?php echo $product['price']; ?></td>  
-                        <td><a href="/admin/product/update/<?php echo $product['ID']; ?>" title="Редактировать"><i class="fa fa-pencil-square-o"></i></a></td>
-                        <td><a href="/admin/product/delete/<?php echo $product['ID']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>
+                        <td>
+                            <a href="/admin/product/update/<?php echo $product['ID']; ?>" title="Редактировать">
+                                <i class="fa fa-pencil-square-o"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/admin/product/delete/<?php echo $product['ID']; ?>" title="Удалить">
+                                 <i class="fa fa-times"></i>
+                            </a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
