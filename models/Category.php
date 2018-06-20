@@ -59,7 +59,7 @@ class Category
     public static function getCategoryById($id)
     {
         // Текст запроса к БД
-        return R::getAll('SELECT * FROM category WHERE ID = ?', array($id));
+        return R::getRow('SELECT * FROM category WHERE ID = ?', array($id));
 
        
     }

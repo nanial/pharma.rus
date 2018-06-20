@@ -31,7 +31,7 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="/upload/images/products/<?php echo $product['image'] ?>" alt="" />
+                                        <img src="<?php echo $product['image'] ?>" alt="" />
                                         <h2> <?php echo $product['price']; ?> бел.руб</h2>
                                         <p>
                                             <a href="/product/<?php echo $product['ID']; ?>">
@@ -68,7 +68,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/upload/images/products/<?php echo $sliderItem['image']; ?>" alt="" />
+                                            <img src="<?php echo $sliderItem['image']; ?>" alt="" />
                                             <h2><?php echo $sliderItem['price']; ?> бел.руб </h2>
                                             <a href="/product/<?php echo $sliderItem['ID']; ?>">
                                                 <?php echo $product['nameOfMedical']; ?>

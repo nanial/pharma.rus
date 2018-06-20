@@ -124,6 +124,12 @@ class Product
 
     }
 
+    public static function getTotalProductsInCategory($categoryId)
+    {
+        // Текст запроса к БД
+        return R::getCell('SELECT count(ID) AS count FROM product WHERE status="1" AND categoryID= :categoryID', array(':categoryID'=>$categoryId));
+    }
+
     /**
      * Возвращает список товаров с указанными индентификторами
      * @param array $idsArray <p>Массив с идентификаторами</p>
@@ -311,32 +317,6 @@ class Product
                 return 'Под заказ';
                 break;
         }
-    }
-
-    /**
-     * Возвращает путь к изображению
-     * @param integer $id
-     * @return string <p>Путь к изображению</p>
-     */
-    public static function getImage($id)
-    {
-        // Название изображения-пустышки
-        $noImage = 'no-image.jpg';
-
-        // Путь к папке с товарами
-        $path = '/upload/images/products/';
-
-        // Путь к изображению товара
-        $pathToProductImage = $path . $id . '.jpg';
-
-        if (file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage)) {
-            // Если изображение для товара существует
-            // Возвращаем путь изображения товара
-            return $pathToProductImage;
-        }
-
-        // Возвращаем путь изображения-пустышки
-        return $path . $noImage;
     }
 
 }
