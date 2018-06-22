@@ -142,5 +142,23 @@ class Order
     }
     return $ret;
     }
-
+    public static function getOrderCountByManufactures()
+    {
+    $result = R::getAll('SELECT mf.nameOfManuffactures, sum(po.Quantity) '
+    .'FROM productsToOrders po '
+    .'inner join product pr on po.productID = pr.ID '
+    .'inner join medical med on pr.medicalID = med.ID '
+    .'inner join manufactures mf on med.manufacturerID = mf.ID '
+    .'GROUP BY mf.nameOfManuffactures');
+    
+    $ret = array();
+    foreach ($result as $val)
+    {
+    $rv = array();
+    $rv['name'] = $val['nameOfManuffactures'];
+    $rv['count'] = $val['sum(po.Quantity)'];
+    array_push($ret, $rv);
+    }
+    return $ret;
+    }
 }

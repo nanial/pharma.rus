@@ -23,6 +23,7 @@
     </head><!--/head-->
 
     <body>
+    
         <div class="page-wrapper">
 
             <header id="header"><!--header-->
@@ -45,6 +46,7 @@
                             </div>
                         </div>
                     </div>
+                   
                 </div><!--/header_top-->
 
                

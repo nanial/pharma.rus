@@ -5,6 +5,8 @@ return array(
     'product/([0-9]+)' => 'product/view/$1', // actionView в ProductController
     // Charts
     'charts/diagramm' => 'charts/diagramm',
+    'chartsBar/diagrammBar' => 'chartsBar/diagrammBar',
+
 
     // Каталог:
     'catalog' => 'catalog/index', // actionIndex в CatalogController

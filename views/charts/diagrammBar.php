@@ -49,7 +49,7 @@
                 }
             };
             var myPieChart = new Chart(ctx,{
-                type: 'pie',
+                type: 'bar',
                 data: data
             });
             </script>
