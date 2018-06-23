@@ -12,7 +12,10 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a href="/category/<?php echo $categoryItem['ID']; ?>"
-                                           class="<?php if ($categoryId == $categoryItem['ID']) echo 'active'; ?>"
+                                          class= "<?php 
+                                           if ($categoryId == $categoryItem['ID']) 
+                                            echo 'active';
+                                            $a = categoryItem['name'];?>"
                                            >                                                                                    
                                                <?php echo $categoryItem['name']; ?>
                                         </a>
@@ -26,7 +29,7 @@
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center"> ПОСЛЕДНИЕ ТОВАРЫ</h2>
+                    <h2 class="title text-center"> <?php echo $a; ?></h2>
                     <?php foreach ($categoryProducts as $product): ?>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">

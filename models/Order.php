@@ -161,4 +161,57 @@ class Order
     }
     return $ret;
     }
+    public static function getOrderCountByDays()
+    {
+    $result = R::getAll('SELECT sum(po.Quantity), date(ord.date) '
+    .'FROM productsToOrders po '
+    .'inner join product pr on po.productID = pr.ID '    
+    .'inner join orders ord on po.orderID = ord.ID '
+    .'GROUP BY ord.date');
+    $ret = array();
+    foreach ($result as $val)
+    {
+    $rv = array();   
+    $rv['count'] = $val['sum(po.Quantity)'];
+    $rv['date'] = $val['date(ord.date)'];
+    array_push($ret, $rv);
+    }
+    return $ret;
+    }
+    public static function getOrderCountBySuppliers()
+    {
+    $result = R::getAll('SELECT sp.NameOfSupplier, sum(po.Quantity) '
+    .'FROM productsToOrders po '
+    .'inner join product pr on po.productID = pr.ID '    
+    .'inner join arrival arv on pr.arrivalsID = arv.ID '
+    .'inner join suppliers sp on arv.supplierID = sp.ID '
+    .'GROUP BY sp.NameOfSupplier');
+    $ret = array();
+    foreach ($result as $val)
+    {
+    $rv = array();   
+    $rv['count'] = $val['sum(po.Quantity)'];
+    $rv['name'] = $val['NameOfSupplier'];
+    array_push($ret, $rv);
+    }
+    return $ret;
+    }
+    public static function getOrderCountByCategories()
+    {
+    $result = R::getAll('SELECT ct.name, sum(po.Quantity) '
+    .'FROM productsToOrders po '
+    .'inner join product pr on po.productID = pr.ID '    
+    .'inner join category ct on pr.categoryID = ct.ID '
+    .'GROUP BY ct.name');
+    $ret = array();
+    foreach ($result as $val)
+    {
+    $rv = array();   
+    $rv['count'] = $val['sum(po.Quantity)'];
+    $rv['name'] = $val['name'];
+    array_push($ret, $rv);
+    var_dump ($rv);
+    }
+    return $ret;
+    }
 }

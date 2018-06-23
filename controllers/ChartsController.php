@@ -20,8 +20,21 @@ class ChartsController
         {
             $data = Order::getOrderCountByManufactures();
         }
+        if ($table_name == 'productToOrders')
+        {
+            $data = Order::getOrderCountByDays();
+        }
+        if ($table_name == 'suppliers')
+        {
+            $data = Order::getOrderCountBySuppliers();
+        }
 
-
+        require_once(ROOT . '/views/charts/diagramm.php');
+        return true;
+        if ($table_name == 'category')
+        {
+            $data = Order::getOrderCountByCategories();
+        }
         require_once(ROOT . '/views/charts/diagramm.php');
         return true;
     }
@@ -38,6 +51,20 @@ class ChartsController
         if ($table_name == 'manufactures')
         {
             $data = Order::getOrderCountByManufactures();
+        }
+        if ($table_name == 'productToOrders')
+        {
+            $data = Order::getOrderCountByDays();
+        }
+        if ($table_name == 'suppliers')
+        {
+            $data = Order::getOrderCountBySuppliers();
+        }
+        require_once(ROOT . '/views/charts/diagrammBar.php');
+        return true;
+        if ($table_name == 'category')
+        {
+            $data = Order::getOrderCountByCategories();
         }
         require_once(ROOT . '/views/charts/diagrammBar.php');
         return true;
