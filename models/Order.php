@@ -204,14 +204,16 @@ class Order
     .'inner join category ct on pr.categoryID = ct.ID '
     .'GROUP BY ct.name');
     $ret = array();
+    var_dump ($result);
     foreach ($result as $val)
     {
     $rv = array();   
     $rv['count'] = $val['sum(po.Quantity)'];
     $rv['name'] = $val['name'];
     array_push($ret, $rv);
-    var_dump ($rv);
+   
     }
+    var_dump ($ret);
     return $ret;
     }
 }
