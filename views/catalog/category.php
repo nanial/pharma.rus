@@ -12,23 +12,12 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a href="/category/<?php echo $categoryItem['ID']; ?>"
-<<<<<<< HEAD
-                                          class= "<?php 
-                                           if ($categoryId == $categoryItem['ID']) 
-                                            {
-                                            echo 'active';
-                                            $a = categoryItem['name'];
-                                            echo $a;
-                                            }
-                                            ?>"
-=======
-                                            class= "<?php 
+                                        class= "<?php 
                                                 if ($categoryId == $categoryItem['ID']) 
                                                 {
                                                     echo 'active';
                                                     $a = $categoryItem['name'];
                                                 } ?>"
->>>>>>> eca07370f202dfb858b227d97bb2854cfc85f7dd
                                            >                                                                                    
                                                <?php echo $categoryItem['name']; ?>
                                         </a>
