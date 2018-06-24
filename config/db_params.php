@@ -4,6 +4,6 @@
 return array(
     'host' => 'localhost',
     'dbname' => 'pharma',
-    'user' => 'root',
-    'password' => 'Aa3286485090',
+    'user' => 'uservip',
+    'password' => 'Aa6941284',
 );

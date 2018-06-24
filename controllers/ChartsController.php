@@ -11,60 +11,44 @@ class ChartsController
         $table_name = $_GET['table'];
 
         $data = array();
-        
-        if ($table_name == 'orders')
+        switch ($table_name)
         {
-            $data = Order::getOrderCountByProduct();
-        }
-        if ($table_name == 'manufactures')
-        {
-            $data = Order::getOrderCountByManufactures();
-        }
-        if ($table_name == 'productToOrders')
-        {
-            $data = Order::getOrderCountByDays();
-        }
-        if ($table_name == 'suppliers')
-        {
-            $data = Order::getOrderCountBySuppliers();
-        }
-
-        require_once(ROOT . '/views/charts/diagramm.php');
-        return true;
-        if ($table_name == 'category')
-        {
-            $data = Order::getOrderCountByCategories();
+            case 'orders':
+                $data = Order::getOrderCountByProduct();
+                break;
+            case 'manufactures':
+                $data = Order::getOrderCountByManufactures();
+                break;
+            case 'productToOrders':
+                $data = Order::getOrderCountByDays();
+                break;
+            case 'category':
+                $data = Order::getOrderCountByCategories();
+                break;
         }
         require_once(ROOT . '/views/charts/diagramm.php');
         return true;
     }
+
     public function actionDiagrammBar()
     {
         $table_name = $_GET['table'];
 
         $data = array();
-        
-        if ($table_name == 'orders')
+        switch ($table_name)
         {
-            $data = Order::getOrderCountByProduct();
-        }
-        if ($table_name == 'manufactures')
-        {
-            $data = Order::getOrderCountByManufactures();
-        }
-        if ($table_name == 'productToOrders')
-        {
-            $data = Order::getOrderCountByDays();
-        }
-        if ($table_name == 'suppliers')
-        {
-            $data = Order::getOrderCountBySuppliers();
-        }
-        require_once(ROOT . '/views/charts/diagrammBar.php');
-        return true;
-        if ($table_name == 'category')
-        {
-            $data = Order::getOrderCountByCategories();
+            case 'orders':
+                $data = Order::getOrderCountByProduct();
+                break;
+            case 'manufactures':
+                $data = Order::getOrderCountByManufactures();
+                break;
+            case 'productToOrders':
+                $data = Order::getOrderCountByDays();
+                break;
+            case 'category':
+                $data = Order::getOrderCountByCategories();
+                break;
         }
         require_once(ROOT . '/views/charts/diagrammBar.php');
         return true;

@@ -127,77 +127,82 @@ class Order
 
     public static function getOrderCountByProduct()
     {
-    $result = R::getAll('SELECT med.nameOfMedical, sum(po.Quantity) '
-    .'FROM productsToOrders po '
-    .'inner join product pr on po.productID = pr.ID '
-    .'inner join medical med on pr.medicalID = med.ID '
-    .'GROUP BY med.nameOfMedical');
-    $ret = array();
-    foreach ($result as $val)
-    {
-    $rv = array();
-    $rv['name'] = $val['nameOfMedical'];
-    $rv['count'] = $val['sum(po.Quantity)'];
-    array_push($ret, $rv);
+        $result = R::getAll('SELECT med.nameOfMedical, sum(po.Quantity) '
+            .'FROM productsToOrders po '
+            .'inner join product pr on po.productID = pr.ID '
+            .'inner join medical med on pr.medicalID = med.ID '
+            .'GROUP BY med.nameOfMedical');
+        $ret = array();
+        foreach ($result as $val)
+        {
+            $rv = array();
+            $rv['name'] = $val['nameOfMedical'];
+            $rv['count'] = $val['sum(po.Quantity)'];
+            array_push($ret, $rv);
+        }
+        return $ret;
     }
-    return $ret;
-    }
+
     public static function getOrderCountByManufactures()
     {
-    $result = R::getAll('SELECT mf.nameOfManuffactures, sum(po.Quantity) '
-    .'FROM productsToOrders po '
-    .'inner join product pr on po.productID = pr.ID '
-    .'inner join medical med on pr.medicalID = med.ID '
-    .'inner join manufactures mf on med.manufacturerID = mf.ID '
-    .'GROUP BY mf.nameOfManuffactures');
-    
-    $ret = array();
-    foreach ($result as $val)
-    {
-    $rv = array();
-    $rv['name'] = $val['nameOfManuffactures'];
-    $rv['count'] = $val['sum(po.Quantity)'];
-    array_push($ret, $rv);
+        $result = R::getAll('SELECT mf.nameOfManuffactures, sum(po.Quantity) '
+            .'FROM productsToOrders po '
+            .'inner join product pr on po.productID = pr.ID '
+            .'inner join medical med on pr.medicalID = med.ID '
+            .'inner join manufactures mf on med.manufacturerID = mf.ID '
+            .'GROUP BY mf.nameOfManuffactures');
+        
+        $ret = array();
+        foreach ($result as $val)
+        {
+            $rv = array();
+            $rv['name'] = $val['nameOfManuffactures'];
+            $rv['count'] = $val['sum(po.Quantity)'];
+            array_push($ret, $rv);
+        }
+        return $ret;
     }
-    return $ret;
-    }
+
     public static function getOrderCountByDays()
     {
-    $result = R::getAll('SELECT sum(po.Quantity), date(ord.date) '
-    .'FROM productsToOrders po '
-    .'inner join product pr on po.productID = pr.ID '    
-    .'inner join orders ord on po.orderID = ord.ID '
-    .'GROUP BY ord.date');
-    $ret = array();
-    foreach ($result as $val)
-    {
-    $rv = array();   
-    $rv['count'] = $val['sum(po.Quantity)'];
-    $rv['date'] = $val['date(ord.date)'];
-    array_push($ret, $rv);
+        $result = R::getAll('SELECT sum(po.Quantity), date(ord.date) '
+            .'FROM productsToOrders po '
+            .'inner join product pr on po.productID = pr.ID '    
+            .'inner join orders ord on po.orderID = ord.ID '
+            .'GROUP BY ord.date');
+        $ret = array();
+        foreach ($result as $val)
+        {
+            $rv = array();   
+            $rv['count'] = $val['sum(po.Quantity)'];
+            $rv['name'] = $val['date(ord.date)'];
+            array_push($ret, $rv);
+        }
+        return $ret;
     }
-    return $ret;
-    }
+    
     public static function getOrderCountBySuppliers()
     {
-    $result = R::getAll('SELECT sp.NameOfSupplier, sum(po.Quantity) '
-    .'FROM productsToOrders po '
-    .'inner join product pr on po.productID = pr.ID '    
-    .'inner join arrival arv on pr.arrivalsID = arv.ID '
-    .'inner join suppliers sp on arv.supplierID = sp.ID '
-    .'GROUP BY sp.NameOfSupplier');
-    $ret = array();
-    foreach ($result as $val)
-    {
-    $rv = array();   
-    $rv['count'] = $val['sum(po.Quantity)'];
-    $rv['name'] = $val['NameOfSupplier'];
-    array_push($ret, $rv);
+        $result = R::getAll('SELECT sp.NameOfSupplier, sum(po.Quantity) '
+            .'FROM productsToOrders po '
+            .'inner join product pr on po.productID = pr.ID '    
+            .'inner join arrival arv on pr.arrivalsID = arv.ID '
+            .'inner join suppliers sp on arv.supplierID = sp.ID '
+            .'GROUP BY sp.NameOfSupplier');
+        $ret = array();
+        foreach ($result as $val)
+        {
+            $rv = array();   
+            $rv['count'] = $val['sum(po.Quantity)'];
+            $rv['name'] = $val['NameOfSupplier'];
+            array_push($ret, $rv);
+        }
+        return $ret;
     }
-    return $ret;
-    }
+
     public static function getOrderCountByCategories()
     {
+<<<<<<< HEAD
     $result = R::getAll('SELECT ct.name, sum(po.Quantity) '
     .'FROM productsToOrders po '
     .'inner join product pr on po.productID = pr.ID '    
@@ -215,5 +220,21 @@ class Order
     }
     var_dump ($ret);
     return $ret;
+=======
+        $result = R::getAll('SELECT ct.name, sum(po.Quantity) '
+            .'FROM productsToOrders po '
+            .'inner join product pr on po.productID = pr.ID '    
+            .'inner join category ct on pr.categoryID = ct.ID '
+            .'GROUP BY ct.name');
+        $ret = array();
+        foreach ($result as $val)
+        {
+            $rv = array();   
+            $rv['count'] = $val['sum(po.Quantity)'];
+            $rv['name'] = $val['name'];
+            array_push($ret, $rv);
+        }
+        return $ret;
+>>>>>>> eca07370f202dfb858b227d97bb2854cfc85f7dd
     }
 }
