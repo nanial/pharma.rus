@@ -3,11 +3,19 @@
 
 
 
-class ChartsController
+class ChartsController extends AdminBase
 {
+
+    public function actionIndex()
+    {
+        self::checkAdmin();
+        require_once(ROOT . '/views/charts/index.php');
+        return true;
+    }
 
     public function actionDiagramm()
     {
+        self::checkAdmin();
         $table_name = $_GET['table'];
 
         $data = array();
@@ -32,6 +40,7 @@ class ChartsController
 
     public function actionDiagrammBar()
     {
+        self::checkAdmin();
         $table_name = $_GET['table'];
 
         $data = array();
@@ -53,4 +62,5 @@ class ChartsController
         require_once(ROOT . '/views/charts/diagrammBar.php');
         return true;
     }
+
 }

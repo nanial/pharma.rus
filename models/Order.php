@@ -202,22 +202,20 @@ class Order
 
     public static function getOrderCountByCategories()
     {
-    $result = R::getAll('SELECT ct.name, sum(po.Quantity) '
-    .'FROM productsToOrders po '
-    .'inner join product pr on po.productID = pr.ID '    
-    .'inner join category ct on pr.categoryID = ct.ID '
-    .'GROUP BY ct.name');
-    $ret = array();
-    var_dump ($result);
-    foreach ($result as $val)
-    {
-    $rv = array();   
-    $rv['count'] = $val['sum(po.Quantity)'];
-    $rv['name'] = $val['name'];
-    array_push($ret, $rv);
-   
-    }
-    var_dump ($ret);
-    return $ret;
+        $result = R::getAll('SELECT ct.name, sum(po.Quantity) '
+            .'FROM productsToOrders po '
+            .'inner join product pr on po.productID = pr.ID '    
+            .'inner join category ct on pr.categoryID = ct.ID '
+            .'GROUP BY ct.name');
+        $ret = array();
+        foreach ($result as $val)
+        {
+            $rv = array();   
+            $rv['count'] = $val['sum(po.Quantity)'];
+            $rv['name'] = $val['name'];
+            array_push($ret, $rv);
+        
+        }
+        return $ret;
     }
 }
