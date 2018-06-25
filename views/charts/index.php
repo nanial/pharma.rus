@@ -2,14 +2,32 @@
 
 <section>
     <div class="container">
-        <div class="row">
-                
+        <div class="row">   
+            <br/>   
+            <h4>Выберите отчёт:</h4> 
+            <br/>    
             <br/>
-            
             <ul>
-                <li><a href="/charts/diagramm?table=productsToOrders">Графики</a></li>
-                <li><a href="/charts/diagramm?table=manufactures">Графики</a></li>
-                <li><a href="/charts/diagramm?table=orders">Графики</a></li>
+                <li>
+                    Популярность мед.препаратов у клиентов
+                    <a href="/charts/diagramm?table=orders">Диаграмма</a>
+                    <a href="/charts/diagrammBar?table=orders">Гистограмма</a>
+                </li>
+                <li>
+                    Популярность производителей среди заказов
+                    <a href="/charts/diagramm?table=manufactures">Диаграмма</a>
+                    <a href="/charts/diagrammBar?table=manufactures">Гистограмма</a>
+                </li>
+                <li>
+                    Статистика заказов по календарю
+                    <a href="/charts/diagramm?table=productToOrders">Диаграмма</a>
+                    <a href="/charts/diagrammBar?table=productToOrders">Гистограмма</a>
+                </li>
+                <li>
+                    Статусы заказов
+                    <a href="/charts/diagramm?table=category">Диаграмма</a>
+                    <a href="/charts/diagrammBar?table=category">Гистограмма</a>
+                </li>
             </ul>
             
         </div>
