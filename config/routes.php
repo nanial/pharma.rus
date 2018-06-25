@@ -6,6 +6,8 @@ return array(
     // Charts
     'charts/diagramm' => 'charts/diagramm',
     'chartsBar/diagrammBar' => 'chartsBar/diagrammBar',
+    'admin/report' => 'adminReport/index',
+    
 
 
     // Каталог:
