@@ -21,7 +21,7 @@ class Product
         // Текст запроса к БД
         return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
                 . 'Inner Join medical b on a.medicalID=b.ID '
-                . 'WHERE a.status = 1 ORDER BY a.ID DESC '
+                . 'WHERE a.status = 1 ORDER BY b.nameOfMedical ASC '
                 . 'LIMIT :count', array (':count'=>$count                  
          ));
 

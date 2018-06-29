@@ -21,8 +21,9 @@
                         <h2>Регистрация на сайте</h2>
                         <form action="#" method="post">
                             <input type="text" name="name" placeholder="Имя" value="<?php echo $name; ?>"/>
-                            <input type="email" name="email" placeholder="E-mail" value="<?php echo $email; ?>"/>
+                            <input type="email" name="email" placeholder="E-mail" value="<?php echo $email; ?>"/>  
                             <input type="password" name="password" placeholder="Пароль" value="<?php echo $password; ?>"/>
+                            <input type="text" name="phone" placeholder="Телефон" value="<?php echo $phone; ?>"/>
                             <input type="submit" name="submit" class="btn btn-default" value="Регистрация" />
                         </form>
                     </div><!--/sign up form-->

@@ -13,12 +13,12 @@ class User
      * @param string $password <p>Пароль</p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function register($name, $email, $password,$phone)
+    public static function register($name, $email, $password, $phone)
     {
         
 
         // Текст запроса к БД
-        return R::exec('INSERT INTO user (name, email, password,phone) '
+        return R::exec('INSERT INTO user (name, email, password, phone) '
                 . 'VALUES (:name, :email, :password, :phone)', array (':name'=>$name,
                  ':email'=>$email,
                  ':password'=>$password,
@@ -40,7 +40,7 @@ class User
        
         // Текст запроса к БД
         return R:: exec("UPDATE user SET name = :name, 
-        password =:password   phone =:phone
+        password =:password,   phone =:phone
             WHERE ID = :ID",
              array(':name'=>$name,
                    ':password'=>$password,
