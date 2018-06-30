@@ -9,20 +9,31 @@ class SiteController
     /**
      * Action для главной страницы
      */
-    public function actionIndex()
+    public function actionIndex($page = 1)
     {
         // Список категорий для левого меню
         $categories = Category::getCategoriesList();
 
-        // Список последних товаров
-        $latestProducts = Product::getLatestProducts(6);
+        // Список товаров в категории
+        $latestProducts = Product::getProductsListPage($page);
+
+        // Общее количетсво товаров (необходимо для постраничной навигации)
+        $total = Product::getTotalProductsCount();
 
         // Список товаров для слайдера
         $sliderProducts = Product::getRecommendedProducts();
+        
+        // Создаем объект Pagination - постраничная навигация
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
         // Подключаем вид
         require_once(ROOT . '/views/site/index.php');
         return true;
+    }
+
+    public function actionPage($page = 1)
+    {
+        
     }
 
     /**
