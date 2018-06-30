@@ -51,6 +51,8 @@ return array(
     'feedback' => 'site/feedback',
     'about' => 'site/about',
     // Главная страница
+    'index.php/page-([0-9]+)' => 'site/index/$1', 
+    'page-([0-9]+)' => 'site/index/$1', 
     'index.php' => 'site/index', // actionIndex в SiteController
     '' => 'site/index', // actionIndex в SiteController
 );

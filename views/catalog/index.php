@@ -53,13 +53,9 @@
                         </div>
                     <?php endforeach;?>                   
 
-                </div><!--features_items-->
-                    <ul class="pagination">
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="/catalog/page-2">2</a></li>
-                        <li><a href="/catalog/page-3">&gt;</a></li>
-                    </ul>
-
+                </div>
+                <!--features_items-->
+                <?php echo $pagination->get(); ?>
 
             </div>
         </div>

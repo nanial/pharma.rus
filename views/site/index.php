@@ -48,7 +48,12 @@
                         </div>
                     <?php endforeach; ?>
 
-
+                <!-- <ul class="pagination">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="/page-2">2</a></li>
+                    <li><a href="/page-3">&gt;</a></li>
+                </ul> -->
+                <?php echo $pagination->get(); ?>
                 </div><!--features_items-->                
 
                 <div class="recommended_items"><!--Отечественные_items-->

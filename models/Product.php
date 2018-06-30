@@ -319,4 +319,22 @@ class Product
         }
     }
 
+    public static function getTotalProductsCount()
+    {
+        return R::getCell('SELECT count(ID) AS count FROM product WHERE status="1"');
+    }
+
+    public static function getProductsListPage($page = 1)
+    {
+        $limit = Product::SHOW_BY_DEFAULT;
+        // Смещение (для запроса)
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        // Текст запроса к БД
+        return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
+                . 'Inner Join medical b on a.medicalID=b.ID '
+                . 'WHERE a.status = 1 ORDER BY a.ID ASC '
+                . 'LIMIT 6 OFFSET :offset', array (
+                ':offset'=>$offset            
+         ));
+    }
 }

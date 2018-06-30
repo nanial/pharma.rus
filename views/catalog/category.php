@@ -58,7 +58,7 @@
                 
                 <!-- Постраничная навигация -->
                 <?php echo $pagination->get(); ?>
-
+    
             </div>
         </div>
     </div>
