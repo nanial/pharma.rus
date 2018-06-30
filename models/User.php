@@ -13,19 +13,20 @@ class User
      * @param string $password <p>Пароль</p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function register($name, $email, $password,$phone)
+    public static function register($name, $email, $password, $phone)
     {
         
+        $salt = "asdfghjkiu6y5trewqsd/nmfdsdf";
+        $passwordHash = md5($salt.$_POST['password']);
 
         // Текст запроса к БД
-        return R::exec('INSERT INTO user (name, email, password,phone) '
-                . 'VALUES (:name, :email, :password, :phone)', array (':name'=>$name,
+        return R::exec('INSERT INTO user (name, email, password, role, phone) '
+                . 'VALUES (:name, :email, :password, "user", :phone)', array (':name'=>$name,
                  ':email'=>$email,
-                 ':password'=>$password,
+                 ':password'=>$passwordHash, 
                  ':phone'=>$phone                    
                  ));
 
-        
     }
 
     /**
@@ -40,12 +41,13 @@ class User
        
         // Текст запроса к БД
         return R:: exec("UPDATE user SET name = :name, 
-        password =:password   phone =:phone
+        password =:password,   phone =:phone
             WHERE ID = :ID",
              array(':name'=>$name,
+                   ':email'=>$email,  
                    ':password'=>$password,
-                   ':phone'=>$phone,
-                   ':email'=>$email            
+                   ':phone'=>$phone
+                             
             ));
 
        

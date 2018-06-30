@@ -67,7 +67,8 @@
                          data-cycle-slides="div.item"
                          data-cycle-prev="#prev"
                          data-cycle-next="#next"
-                         >                        
+                         >              
+                                  
                              <?php foreach ($sliderProducts as $sliderItem): ?>
                             <div class="item">
                                 <div class="product-image-wrapper">
@@ -76,7 +77,7 @@
                                             <img src="<?php echo $sliderItem['image']; ?>" alt="" />
                                             <h2><?php echo $sliderItem['price']; ?> бел.руб </h2>
                                             <a href="/product/<?php echo $sliderItem['ID']; ?>">
-                                                <?php echo $product['nameOfMedical']; ?>
+                                            <?=$sliderItem["nameOfMedical"]?>
                                             </a>
                                             <br/><br/>
                                             <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $sliderItem['ID']; ?>"><i class="fa fa-shopping-cart"></i>Купить</a>
