@@ -14,7 +14,7 @@ class Category
     {
 
         // Запрос к БД
-        return R::getAll('SELECT ID, name FROM category WHERE status = "1" ORDER BY sort_order, name ASC');
+        return R::getAll('SELECT ID, name FROM category WHERE status = "1" ORDER BY name ASC');
 
     }
 

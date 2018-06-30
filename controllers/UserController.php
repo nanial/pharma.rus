@@ -22,7 +22,7 @@ class UserController
             // Если форма отправлена 
             // Получаем данные из формы
             $name = $_POST['name'];
-            $email = $_POST['email'];
+            $email = $_POST['email'];            
             $password = $_POST['password'];
             $phone = $_POST['phone'];
 
@@ -49,7 +49,7 @@ class UserController
             if ($errors == false) {
                 // Если ошибок нет
                 // Регистрируем пользователя
-                $result = User::register($name, $email, $password);
+                $result = User::register($name, $email, $password, $phone);
             }
         }
 
