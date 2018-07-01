@@ -22,8 +22,8 @@
                 </div>
             </div>
             
-            <div class="col-sm-9 padding-right">
-                <div class="features_items"><!--features_items-->
+           <!-- <div class="col-sm-9 padding-right">
+                <div class="features_items">
                     <h2 class="title text-center">Последние товары</h2>
 
                     <?php foreach ($latestProducts as $product): ?>
@@ -48,13 +48,8 @@
                         </div>
                     <?php endforeach; ?>
 
-                <!-- <ul class="pagination">
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="/page-2">2</a></li>
-                    <li><a href="/page-3">&gt;</a></li>
-                </ul> -->
                 <?php echo $pagination->get(); ?>
-                </div><!--features_items-->                
+                </div> -->               
 
                 <div class="recommended_items"><!--Отечественные_items-->
                     <h2 class="title text-center">Отечественные препараты </h2>

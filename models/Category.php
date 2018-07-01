@@ -95,12 +95,6 @@ class Category
         return R::exec("INSERT INTO category (name, sort_order, status) VALUES (?, ?, ?)",
             array($name, $sortOrder, $status));
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-        // $result = $db->prepare($sql);
-        // $result->bindParam(':name', $name, PDO::PARAM_STR);
-        // $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
-        // $result->bindParam(':status', $status, PDO::PARAM_INT);
-        // return $result->execute();
     }
 
 }
