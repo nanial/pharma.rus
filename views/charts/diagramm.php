@@ -40,6 +40,9 @@
                 ]
             };
             var options = {
+                legend: {
+                    display :false
+                },
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -51,6 +54,7 @@
             var myPieChart = new Chart(ctx,{
                 type: 'pie',
                 data: data
+                option: option
             });
             </script>
         </div>

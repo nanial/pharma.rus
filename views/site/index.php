@@ -22,7 +22,7 @@
                 </div>
             </div>
             
-           <!-- <div class="col-sm-9 padding-right">
+            <div class="col-sm-9 padding-right">
                 <div class="features_items">
                     <h2 class="title text-center">Последние товары</h2>
 
@@ -32,6 +32,7 @@
                                 <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="<?php echo $product['image'] ?>" alt="" />
+                                        
                                         <h2> <?php echo $product['price']; ?> бел.руб</h2>
                                         <p>
                                             <a href="/product/<?php echo $product['ID']; ?>">
@@ -49,8 +50,8 @@
                     <?php endforeach; ?>
 
                 <?php echo $pagination->get(); ?>
-                </div> -->               
-
+                </div>               
+        
                 <div class="recommended_items"><!--Отечественные_items-->
                     <h2 class="title text-center">Отечественные препараты </h2>
                     
@@ -69,11 +70,13 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="<?php echo $sliderItem['image']; ?>" alt="" />
-                                            <h2><?php echo $sliderItem['price']; ?> бел.руб </h2>
+                                       
+                                            
                                             <a href="/product/<?php echo $sliderItem['ID']; ?>">
-                                            <?=$sliderItem["nameOfMedical"]?>
+                                            <img src="<?php echo $sliderItem['image']; ?>" alt="" />
                                             </a>
+                                            <h4> <?php  echo $sliderItem["nameOfMedical"];?></h4>
+                                            <h2><?php echo $sliderItem['price']; ?> бел.руб </h2>
                                             <br/><br/>
                                             <a href="#" class="btn btn-default add-to-cart" data-id="<?php echo $sliderItem['ID']; ?>"><i class="fa fa-shopping-cart"></i>Купить</a>
                                         </div>

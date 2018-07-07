@@ -52,9 +52,8 @@
                             </div>
                         </div>
                     <?php endforeach;?>                   
-
-
                 </div>
+                
                 <!--features_items-->
                 <?php echo $pagination->get(); ?>
             </div>
