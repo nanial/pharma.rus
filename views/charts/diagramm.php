@@ -53,8 +53,8 @@
             };
             var myPieChart = new Chart(ctx,{
                 type: 'pie',
-                data: data
-                option: option
+                data: data,
+                options: options
             });
             </script>
         </div>
