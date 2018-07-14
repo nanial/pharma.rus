@@ -22,6 +22,7 @@ class SiteController
 
         // Список товаров для слайдера
         $sliderProducts = Product::getRecommendedProducts();
+        $sliderImages = Product::getImages();
         
         // Создаем объект Pagination - постраничная навигация
         $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');

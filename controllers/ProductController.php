@@ -18,7 +18,7 @@ class ProductController
 
         // Получаем инфомрацию о товаре
         $product = Product::getProductById($productId);
-
+        
         // Подключаем вид
         require_once(ROOT . '/views/product/view.php');
         return true;

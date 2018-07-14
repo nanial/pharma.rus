@@ -204,13 +204,13 @@ class Product
         );
        
     }
-    public static function getAdminProductsList()
+    
+    public static function getImages()
     {
         
 
         // Получение и возврат результатов
-        return R::getAll ('SELECT a.ID, a.code, b.nameOfMedical, a.price FROM product a '
-        . 'Inner Join medical b on a.medicalID=b.ID ORDER BY a.ID ASC'                        
+        return R::getAll ('SELECT * FROM imageSlide'                        
         );
        
     }
