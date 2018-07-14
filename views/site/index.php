@@ -28,7 +28,7 @@
 
             <div class="cycle-slideshow"
                 data-cycle-fx=carousel
-                data-cycle-timeout=22000
+                data-cycle-timeout=15000
                 data-cycle-carousel-visible=1
                 data-cycle-carousel-fluid=true
                 data-cycle-slides="div.item2"
@@ -40,8 +40,9 @@
                                     <div class="item2">
                                     
                                          <?php echo $sliderImages['ID']; ?>
+                                         <a href="<?php echo $sliderImages['reference']; ?>">
                                                     <img src="<?php echo $sliderImages['imageSlide']; ?>" alt="" />
-                                                    </a>
+                                                    <a href="<?php echo $sliderImages['reference']; ?>"> </a>
                                                 
                                     
                                     </div>
