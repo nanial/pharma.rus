@@ -96,8 +96,8 @@
                         <i class="fa fa-angle-right"></i>
                     </a>
 
-                </div>
-            </div><!--/Отечественные_items-->
+                   </div>
+              </div><!--/Отечественные_items-->
 
         </div>
     </div>
