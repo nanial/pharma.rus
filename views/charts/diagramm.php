@@ -5,6 +5,16 @@
     <div class="container">
         <div class="row">
 
+            <br/>
+
+                        <div class="breadcrumbs">
+                            <ol class="breadcrumb">
+                                
+                                <li><a href="/charts/index">Отчеты</a></li>
+                            
+                            </ol>
+                        </div>
+
             <div class="col-lg-6 centered">
                 <canvas id="chart" width="600" height="600"></canvas>
             </div>

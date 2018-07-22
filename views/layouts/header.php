@@ -19,37 +19,22 @@
         <script src="js/html5shiv.js"></script>
         <script src="js/respond.min.js"></script>
         <![endif]-->       
-        <link rel="icon" sizes="256x256" href="/template/images/ico/favicon.png">
+        <link rel="icon" sizes="100x100" href="/template/images/ico/favicon.png">
        
     </head><!--/head-->
 
     <body>
         <div class="page-wrapper">
-
-
-            <header id="header"><!--header-->
-                <div class="header_top"><!--header_top-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="contactinfo">
-                                    <ul class="nav nav-pills">
-                                        <li><a href="#"><i class="fa fa-phone"></i> +375 029 1785241</a></li>
-                                        <li><a href="#"><i class="fa fa-envelope"></i> pharma@pharma.rus</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div><!--/header_top-->
-
+            <header id="header"><!--header-->             
                 <div class="header-middle"><!--header-middle-->
                     <div class="container">
                         <div class="row">
+                       
                             <div class="col-sm-4">
                                 <div class="logo pull-left">
                                     <a href="/"><img src="/template/images/home/logo.png" alt="" /></a>
+                                    <h3>  ОАО "ФАРМА"</h3>
+                                   
                                 </div>
                             </div>
                             <div class="col-sm-8">
@@ -67,6 +52,11 @@
                                             <li><a href="/cabinet/"><i class="fa fa-user"></i> Аккаунт</a></li>
                                             <li><a href="/user/logout/"><i class="fa fa-unlock"></i> Выход</a></li>
                                         <?php endif; ?>
+                                        <li><a href="user/search/"><img src="/template/images/home/searchicon.png" alt="" />
+                                                </i>Поиск
+                                               
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -95,9 +85,11 @@
                                                 <li><a href="/cart/">Корзина</a></li> 
                                             </ul>
                                         </li>
-                                        <li><a href="/about/">Об аптеке</a></li>
+                                        <li><a href="/about/">О нас</a></li>
                                         <li><a href="/contacts/">Напишите нам</a></li>
                                         <li><a href="/feedback/">Контакты</a></li>
+                                        <li><a href="/history/">История</a></li>
+                                        <li><a href="/technologyNow/">Новые технологии</a></li>
                                     </ul>
                                 </div>
                             </div>

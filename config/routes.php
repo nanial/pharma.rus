@@ -26,6 +26,7 @@ return array(
     'cart' => 'cart/index', // actionIndex в CartController
     // Пользователь:
     'user/register' => 'user/register',
+    'user/search' => 'user/search',
     'user/login' => 'user/login',
     'user/logout' => 'user/logout',
     'cabinet/edit' => 'cabinet/edit',
@@ -52,6 +53,9 @@ return array(
     'contacts' => 'site/contact',
     'feedback' => 'site/feedback',
     'about' => 'site/about',
+    'search' => 'site/search',
+    'history' => 'site/history',
+    'technologyNow' => 'site/technologyNow',
     // Главная страница
     'index.php/page-([0-9]+)' => 'site/index/$1', 
     'page-([0-9]+)' => 'site/index/$1', 

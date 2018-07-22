@@ -121,5 +121,12 @@ class UserController
 
         
     }
+    public function actionSearch()
+    {
+        
+        require_once(ROOT . '/views/user/search.php');
+        return true;
 
+        
+    }
 }

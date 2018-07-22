@@ -7,6 +7,8 @@
      margin-left:4px;
      margin-top:5px;
      overflow:hidden;
+     padding-right:0;
+     top:10px;
      
 }
     .cycle-slideshow img {
@@ -28,7 +30,7 @@
 
             <div class="cycle-slideshow"
                 data-cycle-fx=carousel
-                data-cycle-timeout=15000
+                data-cycle-timeout=8000
                 data-cycle-carousel-visible=1
                 data-cycle-carousel-fluid=true
                 data-cycle-slides="div.item2"
@@ -39,7 +41,7 @@
                                     <?php foreach ($sliderImages as $sliderImages): ?>
                                     <div class="item2">
                                     
-                                         <?php echo $sliderImages['ID']; ?>
+                                        <!--sign up form <?php echo $sliderImages['ID']; ?>-->
                                          <a href="<?php echo $sliderImages['reference']; ?>">
                                                     <img src="<?php echo $sliderImages['imageSlide']; ?>" alt="" />
                                                     <a href="<?php echo $sliderImages['reference']; ?>"> </a>
@@ -47,7 +49,12 @@
                                     
                                     </div>
                                 <?php endforeach; ?>
-                            
+          
+                                <a class="left recommended-item-control" id="prev" href="#recommended-item-carousel" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="right recommended-item-control" id="next"  href="#recommended-item-carousel" data-slide="next">
+                        <i class="fa fa-angle-right"></i>                 
             </div> 
            
         </div>

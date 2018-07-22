@@ -68,7 +68,7 @@ class AdminCategoryController extends AdminBase
 
         // Получаем данные о конкретной категории
         $category = Category::getCategoryById($id);
-     var_dump($category);
+    
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена   

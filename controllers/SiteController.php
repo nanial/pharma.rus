@@ -36,7 +36,14 @@ class SiteController
     {
         
     }
+    public function actionSearch()
+    {
+        
+        require_once(ROOT . '/views/user/search.php');
+        return true;
 
+        
+    }
     /**
      * Action для страницы "Напишите нам"
      */
@@ -83,6 +90,20 @@ class SiteController
         
         // Подключаем вид
         require_once(ROOT . '/views/site/feedback.php');
+        return true;
+    }
+    public function actionHistory()
+    {
+        
+        // Подключаем вид
+        require_once(ROOT . '/views/site/history.php');
+        return true;
+    }
+    public function actionTechnologyNow()
+    {
+        
+        // Подключаем вид
+        require_once(ROOT . '/views/site/technologyNow.php');
         return true;
     }
     /**

@@ -16,15 +16,7 @@ class Medical
         // Запрос к БД
         return R::getAll('SELECT * FROM medical  ORDER BY  manufacturerID ');
 
-        // Получение и возврат результатов
-        // $i = 0;
-        // $categoryList = array();
-        // while ($row = $result->fetch()) {
-        //     $categoryList[$i]['id'] = $row['id'];
-        //     $categoryList[$i]['name'] = $row['name'];
-        //     $i++;
-        // }
-        // return $categoryList;
+       
     }
 
     /**
@@ -47,13 +39,7 @@ class Medical
         return R::exec("UPDATE medical SET nameOfMedical = ?, manufacturerID = ?, unitOfMeasure = ?, unitName = ? WHERE ID = ?",
             array($id, $nameOfMedical, $anotation, $manufacturerID, $unitOfMeasure, $unitName));
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-        // $result = $db->prepare($sql);
-        // $result->bindParam(':id', $id, PDO::PARAM_INT);
-        // $result->bindParam(':name', $name, PDO::PARAM_STR);
-        // $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
-        // $result->bindParam(':status', $status, PDO::PARAM_INT);
-        // return $result->execute();
+       
     }
 
     /**
@@ -66,18 +52,7 @@ class Medical
         // Текст запроса к БД
         return R::getAll('SELECT * FROM medical WHERE ID = ?', array($id));
 
-        // Используется подготовленный запрос
-        // $result = $db->prepare($sql);
-        // $result->bindParam(':id', $id, PDO::PARAM_INT);
-
-        // // Указываем, что хотим получить данные в виде массива
-        // $result->setFetchMode(PDO::FETCH_ASSOC);
-
-        // // Выполняем запрос
-        // $result->execute();
-
-        // // Возвращаем данные
-        // return $result->fetch();
+       
     }
 
     /**
@@ -100,12 +75,7 @@ class Medical
         return R::exec("INSERT INTO medical (nameOfMedical, anotation, manufacturerID, unitOfMeasure, unitName) VALUES ( ?, ?, ?, ?, ?)",
             array($nameOfMedical, $anotation, $manufacturerID, $unitOfMeasure, $unitNames));
 
-        // Получение и возврат результатов. Используется подготовленный запрос
-        // $result = $db->prepare($sql);
-        // $result->bindParam(':name', $name, PDO::PARAM_STR);
-        // $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
-        // $result->bindParam(':status', $status, PDO::PARAM_INT);
-        // return $result->execute();
+       
     }
 
 }

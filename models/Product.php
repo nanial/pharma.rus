@@ -163,6 +163,7 @@ class Product
         // Текст запроса к БД
        
     }
+  
 
     /**
      * Возвращает список рекомендуемых товаров
@@ -223,9 +224,7 @@ class Product
     {
         
         // Текст запроса к БД
-        return R::exec('DELETE FROM product WHERE ID = :id');
-
-               
+        return R::exec('DELETE FROM product WHERE ID = :ID', array (':ID'=>$id));               
     }
 
     /**
@@ -280,23 +279,22 @@ class Product
 
         // Текст запроса к БД
         return R::exec ('INSERT INTO product '
-                . '(ID, code, price, categoryID, availability,'
+                . '( code, price, categoryID, availability,'
                 . 'description, isNew, isRecommended, status, medicalID,arrivalsID, image)'
                 . 'VALUES '
-                . '(:ID, :code, :price, :categoryID, :availability,'
-                . ':description, :isNew, :isRecommended, :status, :medicalID,:arrivalsID , image)',array(':ID'=>$ID,
-                ':code'=>$code,
-                ':price'=>$price,
-                ':categoryID' =>$categoryID,
-                ':availability' =>$availability,
-                ':description' =>$description,
-                ':isNew' => $isNew,
-                ':isRecommended' => $isRecommended,
-                ':status' => $status,
-                ':medicalID' => $medicalID,
-                ':arrivalsID' => $arrivalsID,
-                ':ID' => $ID,
-                ':image' => $image
+                . '( :code, :price, :categoryID, :availability,'
+                . ':description, :isNew, :isRecommended, :status, :medicalID,:arrivalsID , image)',array(
+                ':code'=>$options['code'],
+                ':price'=>$options['price'],
+                ':categoryID' =>$options['categoryID'],
+                ':availability' =>$options['availability'],
+                ':description' =>$options['description'],
+                ':isNew' => $options['isNew'],
+                ':isRecommended' => $options['isRecommended'],
+                ':status' => $options['status'],
+                ':medicalID' => $options['medicalID'],
+                ':arrivalsID' => $options['arrivalsID']               
+                
             ));
       
     }

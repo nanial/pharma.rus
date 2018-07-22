@@ -16,7 +16,7 @@ class AdminProductController extends AdminBase
         self::checkAdmin();
 
         // Получаем список товаров
-        $productsList = Product::getAdminProductsList();
+        $productsList = Product::getProductsList();
 
         require_once(ROOT . '/views/admin_product/index.php');
         return true;
@@ -30,7 +30,7 @@ class AdminProductController extends AdminBase
     {
         // Проверка доступа
         self::checkAdmin();
-        $productsList = Product::getAdminProductsList();
+        $productsList = Product::getProductsList();
         // Получаем список категорий для выпадающего списка
        $categoriesList = Category::getCategoriesListAdmin();
 
@@ -38,16 +38,20 @@ class AdminProductController extends AdminBase
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
+            $options = array();
             $options['nameOfMedical'] = $_POST['nameOfMedical'];
             $options['code'] = $_POST['code'];
             $options['price'] = $_POST['price'];
             $options['categoryID'] = $_POST['categoryID'];
-            $options['unitName'] = $_POST['unitName'];
-            $options['availability'] = $_POST['availability'];
+            $options['unitName'] = $_POST['unitName'];          
             $options['description'] = $_POST['description'];
+            $options['availability'] = $_POST['availability'];           
             $options['isNew'] = $_POST['isNew'];
             $options['isRecommended'] = $_POST['isRecommended'];
             $options['status'] = $_POST['status'];
+            $options['medicalID'] = $_POST['medicalID'];
+            $options['arrivalsID'] = $_POST['arrivalsID'];
+           
 
             // Флаг ошибок в форме
             $errors = false;

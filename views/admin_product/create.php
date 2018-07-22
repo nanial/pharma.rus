@@ -34,9 +34,12 @@
                         <p>Наименование препарата</p>
                         <input type="text" name="nameOfMedical" placeholder="" value="">
 
+                        <p>ID поставки</p>
+                        <input type="text" name="arrivalsID" placeholder="" value="">
+                        <p>ID препарата</p>
+                        <input type="text" name="medicalID" placeholder="" value="">
                         <p>Код/артикул</p>
                         <input type="text" name="code" placeholder="" value="">
-
                         <p>Стоимость, бел.руб</p>
                         <input type="text" name="price" placeholder="" value="">
 
