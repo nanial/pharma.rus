@@ -1,5 +1,9 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
-
+<style>
+    h4{
+        color : rgb(0,255,255);
+    }
+</style>
 <section>
     <div class="container">
         <div class="row">
@@ -10,12 +14,12 @@
                 <ol class="breadcrumb">
                     <li><a href="/admin">Админпанель</a></li>
                     <li><a href="/admin/category">Управление категориями</a></li>
-                    <li class="active">Редактировать категорию</li>
+                    <li class="active">Редактирование</li>
                 </ol>
             </div>
 
 
-            <h4>Редактировать категорию "<?php echo $category['ID']; ?>"</h4>
+            <h4>Редактировать категорию №<?php echo $category['ID']; ?></h4>
 
             <br/>
 

@@ -24,6 +24,7 @@ class Order
                         ':userID' => $userID,
                         ':date' => $date,
                         ':status' => $status
+                        
             ));
         $orderID = R::getCell('SELECT ID FROM orders WHERE userID= :userID ORDER BY date DESC',
             array(':userID' => $userID));
@@ -113,7 +114,7 @@ class Order
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    public static function updateOrderById($id, $userComment, $userID,  $date, $status)
+    public static function updateOrderById($id, $userComment, $userID,  $date, $status, $photoOfRecipe)
     {
         // Текст запроса к БД
         return R::exec( "UPDATE orders
@@ -121,8 +122,9 @@ class Order
                 userID = :userID, 
                 userComment = :userComment,              
                 date = :date, 
-                status = :status 
-            WHERE ID = :ID", array (':userComment'=>$userComment, ':userID'=>$userId, ':date'=>$date, ':status' => $status));
+                status = :status,
+                photoOfRecipe = :photoOfRecipe
+            WHERE ID = :ID", array (':userComment'=>$userComment, ':userID'=>$userId, ':date'=>$date, ':status' => $status, ':photoOfRecipe' => $photoOfRecipe));
     }
 
     public static function getOrderCountByProduct()

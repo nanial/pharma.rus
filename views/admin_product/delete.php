@@ -1,5 +1,9 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
-
+<style>
+    h4{
+        color : rgb(0,255,255);
+    }
+</style>
 <section>
     <div class="container">
         <div class="row">
@@ -12,12 +16,12 @@
                 <ol class="breadcrumb">
                     <li><a href="/admin">Админпанель</a></li>
                     <li><a href="/admin/product">Управление товарами</a></li>
-                    <li class="active">Удалить товар</li>
+                    <li class="active">Удаление</li>
                 </ol>
             </div>
 
 
-            <h4>Удалить товар #<?php echo $id; ?></h4>
+            <h4>Удалить товар №<?php echo $id; ?></h4>
 
 
             <p>Вы действительно хотите удалить этот товар?</p>

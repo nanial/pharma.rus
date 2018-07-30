@@ -136,6 +136,16 @@ class CartController
 
             $result = Order::save($userId, $date, $userComment, $status, $productsIds);
 
+            /*if ($id) {
+                // Проверим, загружалось ли через форму изображение
+                if (is_uploaded_file($_FILES["photoOfRecipe"]["tmp_name"])) {
+                    // Если загружалось, переместим его в нужную папке, дадим новое имя
+                    move_uploaded_file($_FILES["photoOfRecipe"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/img/recipe/{$id}.jpg");
+
+                    Product :: setImage($id, "/upload/img/recipe/{$id}.jpg");
+                }
+            };*/
+
             if ($result) {
                 // Если заказ успешно сохранен
                 // Оповещаем администратора о новом заказе по почте                

@@ -20,6 +20,7 @@
                         <?php endforeach; ?>
                         
                     </div>
+                    <a href= "/gift/"><img src ="/upload/images/products/gift.jpg"></a>
                 </div>
             </div>
 
@@ -56,6 +57,8 @@
                 
                 <!--features_items-->
                 <?php echo $pagination->get(); ?>
+                
+                <img src ="/upload/img/17.jpg">
             </div>
 
             </div>

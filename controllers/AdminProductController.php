@@ -33,13 +33,14 @@ class AdminProductController extends AdminBase
         $productsList = Product::getProductsList();
         // Получаем список категорий для выпадающего списка
        $categoriesList = Category::getCategoriesListAdmin();
+       $medicalList = Medical :: getMedicalListAdmin();
 
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
             $options = array();
-            $options['nameOfMedical'] = $_POST['nameOfMedical'];
+           
             $options['code'] = $_POST['code'];
             $options['price'] = $_POST['price'];
             $options['categoryID'] = $_POST['categoryID'];
@@ -72,6 +73,8 @@ class AdminProductController extends AdminBase
                     if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
                         // Если загружалось, переместим его в нужную папке, дадим новое имя
                         move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
+
+                        Product :: setImage($id, "/upload/images/products/{$id}.jpg");
                     }
                 };
 
@@ -102,19 +105,17 @@ class AdminProductController extends AdminBase
         // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
-            // Получаем данные из формы редактирования. При необходимости можно валидировать значения
-            $options['nameOfMedical'] = $_POST['nameOfMedical'];
+            $options = array();          
             $options['code'] = $_POST['code'];
             $options['price'] = $_POST['price'];
-            $options['categoryID'] = $_POST['categoryID'];
-            $options['unitName'] = $_POST['unitName'];
-            $options['availability'] = $_POST['availability'];
+            $options['categoryID'] = $_POST['categoryID'];                
             $options['description'] = $_POST['description'];
-            $options['isNew'] = $_POST['isNew'];
-            $options['isRecommended'] = $_POST['isRecommended'];
+            $options['availability'] = $_POST['availability'];           
+            $options['isNew'] = $_POST['isNew'];            
             $options['status'] = $_POST['status'];
-
-            // Сохраняем изменения
+            $options['isRecommended'] = $_POST['isRecommended'];           
+            $options['nameOfMedical'] = $_POST['nameOfMedical'];
+           
             if (Product::updateProductById($id, $options)) {
 
 
@@ -124,6 +125,7 @@ class AdminProductController extends AdminBase
 
                     // Если загружалось, переместим его в нужную папке, дадим новое имя
                    move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
+                   Product :: setImage($id, "/upload/images/products/{$id}.jpg");
                 }
             }
 

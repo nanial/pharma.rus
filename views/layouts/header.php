@@ -32,10 +32,10 @@
                        
                             <div class="col-sm-4">
                                 <div class="logo pull-left">
-                                    <a href="/"><img src="/template/images/home/logo.png" alt="" /></a>
-                                    <h3>  ОАО "ФАРМА"</h3>
-                                   
+                                    <a href="/"><img src="/template/images/home/logo.png" alt="" /></a>                                  
                                 </div>
+                                <h3>  ОАО "ФАРМА"</h3>
+                                
                             </div>
                             <div class="col-sm-8">
                                 <div class="shop-menu pull-right">
@@ -52,10 +52,7 @@
                                             <li><a href="/cabinet/"><i class="fa fa-user"></i> Аккаунт</a></li>
                                             <li><a href="/user/logout/"><i class="fa fa-unlock"></i> Выход</a></li>
                                         <?php endif; ?>
-                                        <li><a href="user/search/"><img src="/template/images/home/searchicon.png" alt="" />
-                                                </i>Поиск
-                                               
-                                            </a>
+                                        <li><a href="/user/search/"><img src="/template/images/home/searchicon.png" alt="" />  Поиск</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -90,6 +87,7 @@
                                         <li><a href="/feedback/">Контакты</a></li>
                                         <li><a href="/history/">История</a></li>
                                         <li><a href="/technologyNow/">Новые технологии</a></li>
+                                        <li><a href="/gift/">Сертификат</a></li>
                                     </ul>
                                 </div>
                             </div>

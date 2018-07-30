@@ -54,6 +54,12 @@ class Medical
 
        
     }
+    public static function getMedicalListAdmin()
+    {
+
+     
+        return R::getAll('SELECT ID, nameOfMedical FROM medical ORDER BY ID ASC');
+    }
 
     /**
      * Возвращает текстое пояснение статуса для категории :<br/>

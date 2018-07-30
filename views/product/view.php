@@ -19,6 +19,7 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
+                    <img src ="/upload/images/products/gift.jpg">
                 </div>
             </div>
 

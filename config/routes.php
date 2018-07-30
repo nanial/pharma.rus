@@ -56,6 +56,7 @@ return array(
     'search' => 'site/search',
     'history' => 'site/history',
     'technologyNow' => 'site/technologyNow',
+    'gift' => 'site/gift',
     // Главная страница
     'index.php/page-([0-9]+)' => 'site/index/$1', 
     'page-([0-9]+)' => 'site/index/$1', 

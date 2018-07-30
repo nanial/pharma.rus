@@ -19,6 +19,8 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
+                    <a href= "/gift/"><img src ="/upload/images/products/gift.jpg"></a>
+                   
                 </div>
             </div>
 

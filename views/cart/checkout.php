@@ -19,6 +19,7 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
+                    <img src ="/upload/images/products/gift.jpg">
                 </div>
             </div>
 
@@ -50,6 +51,11 @@
                                     <form action="#" method="post">
                                         <p>Комментарий к заказу</p>
                                         <input type="text" name="userComment" placeholder="Сообщение" value="<?php echo $userComment; ?>"/>
+                                        <br/>
+                                        <br/>
+                                      
+                                        <p>Добавьте фото Вашего рецепта:</p>
+                                        <input type="file" name="photoOfRecipe" placeholder="Выберите файл:" value="<?php echo $photoOfRecipe; ?>"/>
 
                                         <br/>
                                         <br/>

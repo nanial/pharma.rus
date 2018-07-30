@@ -7,7 +7,7 @@ class Product
 {
 
     // Количество отображаемых товаров по умолчанию
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 9;
 
     /**
      * Возвращает массив последних товаров
@@ -238,32 +238,30 @@ class Product
        
 
         // Текст запроса к БД
-        return R::exec("UPDATE product
-            SET 
-                ID = :ID,                
+        $ret =  R::exec("UPDATE product
+            SET                              
                 code = :code, 
                 price = :price, 
                 categoryID = :categoryID, 
                 availability = :availability, 
-                description = :description,
-                image = :image, 
-                isNew = :isNew, 
+                description = :description,                
+                isNew = :isNew,                
                 isRecommended = :isRecommended, 
                 status = :status,
-                medicalID = :medicalID,
-                arrivalsID = :arrivalsID 
+                nameOfMedical = :nameOfMedical
+                            
 
             WHERE ID = :ID", array (':ID'=>$id,
-            ':code' =>$code,
-            ':price' =>$price,
-            ':category' =>$category,
-            ':availability' => $availability,
-            ':description' => $description,
-            ':isNew' => $isNew,
-            ':isRecommended' => $isRecommended,
-            ':medicalId' => $medicalID,
-            ':arrivalsID' => $arrivalsID,
-            ':image' => $image
+            
+            ':price' =>$options ['price'],            
+            ':availability' => $options ['availability'],
+            ':description' => $options ['description'],
+            ':isNew' => $options ['isNew'],           
+            ':isRecommended' => $options ['isRecommended'],
+            ':categoryID' => $options ['categoryID'],
+            ':code' => $options ['code'],           
+            ':status' => $options ['status'],
+            ':nameOfMedical' => $options['nameOfMedical']
         ));
 
     }
@@ -274,16 +272,14 @@ class Product
      * @return integer <p>id добавленной в таблицу записи</p>
      */
     public static function createProduct($options)
-    {
-        
-
-        // Текст запроса к БД
-        return R::exec ('INSERT INTO product '
+    {       
+       
+        $ret =  R::exec ('INSERT INTO product '
                 . '( code, price, categoryID, availability,'
-                . 'description, isNew, isRecommended, status, medicalID,arrivalsID, image)'
+                . 'description, isNew, isRecommended, status, medicalID, arrivalsID)'
                 . 'VALUES '
                 . '( :code, :price, :categoryID, :availability,'
-                . ':description, :isNew, :isRecommended, :status, :medicalID,:arrivalsID , image)',array(
+                . ':description, :isNew, :isRecommended, :status, :medicalID, :arrivalsID)',array(
                 ':code'=>$options['code'],
                 ':price'=>$options['price'],
                 ':categoryID' =>$options['categoryID'],
@@ -291,12 +287,23 @@ class Product
                 ':description' =>$options['description'],
                 ':isNew' => $options['isNew'],
                 ':isRecommended' => $options['isRecommended'],
-                ':status' => $options['status'],
-                ':medicalID' => $options['medicalID'],
-                ':arrivalsID' => $options['arrivalsID']               
+                ':status' => $options['status'],                        
+                ':medicalID' => $options['medicalID'],  
+                ':arrivalsID' => $options['arrivalsID']
+                         
                 
             ));
+           
+        return R:: getCell ('SELECT ID FROM product WHERE code = :code ',
+        array(':code' => $options['code']));    
       
+    }
+
+    public static function setImage($id, $path)
+    {
+        return R :: exec ('UPDATE product SET image = :pathToFile WHERE ID = :id ',
+        
+        array(':pathToFile' => $path, 'id' => $id));
     }
 
     /**
@@ -331,7 +338,7 @@ class Product
         return R::getAll ('SELECT a.ID,a.price, a.isNew, b.nameOfMedical, a.image FROM product a '
                 . 'Inner Join medical b on a.medicalID=b.ID '
                 . 'WHERE a.status = 1 ORDER BY a.ID ASC '
-                . 'LIMIT 6 OFFSET :offset', array (
+                . 'LIMIT 9 OFFSET :offset', array (
                 ':offset'=>$offset            
          ));
     }

@@ -26,8 +26,11 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
+                    
+                    <a href= "/gift/"><img src ="/upload/images/products/gift.jpg"></a>
                 </div>
             </div>
+
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
@@ -55,9 +58,10 @@
                     <?php endforeach; ?>                              
 
                 </div><!--features_items-->
-                
+               
                 <!-- Постраничная навигация -->
                 <?php echo $pagination->get(); ?>
+                <img src ="/upload/img/17.jpg">
     
             </div>
         </div>

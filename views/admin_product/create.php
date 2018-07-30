@@ -1,5 +1,9 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
-
+<style>
+    h4{
+        color : rgb(0,255,255);
+    }
+</style>
 <section>
     <div class="container">
         <div class="row">
@@ -30,14 +34,22 @@
             <div class="col-lg-4">
                 <div class="login-form">
                     <form action="#" method="post" enctype="multipart/form-data">
-
-                        <p>Наименование препарата</p>
-                        <input type="text" name="nameOfMedical" placeholder="" value="">
-
-                        <p>ID поставки</p>
-                        <input type="text" name="arrivalsID" placeholder="" value="">
+                    <p>Наименование препарата</p>
+                        <select name="medicalID">
+                            <?php if (is_array($medicalList)): ?>
+                                <?php foreach ($medicalList as $medical): ?>
+                                    <option value="<?php echo $medical['ID']; ?>">
+                                        <?php echo $medical['nameOfMedical']; ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </select>
+                  
                         <p>ID препарата</p>
                         <input type="text" name="medicalID" placeholder="" value="">
+                        <p>ID поставки</p>
+                        <input type="text" name="arrivalsID" placeholder="" value="">
+                       
                         <p>Код/артикул</p>
                         <input type="text" name="code" placeholder="" value="">
                         <p>Стоимость, бел.руб</p>
@@ -53,6 +65,7 @@
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </select>
+                      
 
                         <br/><br/>
 

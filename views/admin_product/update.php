@@ -1,5 +1,9 @@
 <?php include ROOT . '/views/layouts/header_admin.php'; ?>
-
+<style>
+    h4{
+        color : rgb(0,255,255);
+    }
+</style>
 <section>
     <div class="container">
         <div class="row">
@@ -10,12 +14,12 @@
                 <ol class="breadcrumb">
                    
                     <li><a href="/admin/product">Управление товарами</a></li>
-                    <li class="active">Редактировать товар</li>
+                    <li class="active">Редактирование</li>
                 </ol>
             </div>
 
 
-            <h4>Редактировать товар #<?php echo $id; ?></h4>
+            <h4>Товар №<?php echo $id; ?></h4>
 
             <br/>
 
@@ -24,7 +28,7 @@
                     <form action="#" method="post" enctype="multipart/form-data">
 
                         <p>Название товара</p>
-                        <input type="text" name="name" placeholder="" value="<?php echo $product['nameOfMedical']; ?>">
+                        <input type="text" name="nameOfMedical" placeholder="" value="<?php echo $product['nameOfMedical']; ?>">
 
                         <p>Артикул</p>
                         <input type="text" name="code" placeholder="" value="<?php echo $product['code']; ?>">
@@ -49,9 +53,9 @@
                         <p>Международное непатентованное название</p>
                         <input type="text" name="brand" placeholder="" value="<?php echo $product['unitName']; ?>">
 
+                        
                         <p>Изображение товара</p>
-                        <img src="<?php echo $product['image']; ?>" width="200" alt="" />
-                        <input type="file" name="image" placeholder="" value="<?php echo $product['image']; ?>">
+                        <input type="file" name="image" placeholder="" value="="<?php echo $product['image']; ?>">
 
                         <p>Рекомендации к применению</p>
                         <textarea name="description"><?php echo $product['description']; ?></textarea>
@@ -75,7 +79,7 @@
                         <br/><br/>
 
                         <p>Рекомендуемые</p>
-                        <select name="is_recommended">
+                        <select name="isRecommended">
                             <option value="1" <?php if ($product['isRecommended'] == 1) echo ' selected="selected"'; ?>>Да</option>
                             <option value="0" <?php if ($product['isRecommended'] == 0) echo ' selected="selected"'; ?>>Нет</option>
                         </select>
